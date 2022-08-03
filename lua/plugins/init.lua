@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
             -- {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'}
         -- },
         -- config = require('plugins.nvim-cmp')
-    }
+    -- }
 
     use {
         'neovim/nvim-lspconfig',
