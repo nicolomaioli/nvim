@@ -6,6 +6,7 @@ capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 local M = {
     ['sumneko_lua'] = require('plugins.nvim-lspconfig.lua-language-server'),
+    ['tsserver'] = require('plugins.nvim-lspconfig.tsserver'),
     ['efm'] = require('plugins.nvim-lspconfig.efm-langserver')
 }
 
@@ -17,13 +18,13 @@ end
 -- Diagnostics
 vim.lsp.handlers['textDocument/publishDiagnostics'] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-                 {virtual_text = false, signs = true})
+        {virtual_text = false, signs = true})
 
 vim.fn.sign_define('LspDiagnosticsSignError',
-                   {text = '', texthl = 'LspDiagnosticsDefaultError'})
+    {text = '', texthl = 'LspDiagnosticsDefaultError'})
 vim.fn.sign_define('LspDiagnosticsSignWarning',
-                   {text = '', texthl = 'LspDiagnosticsDefaultWarning'})
+    {text = '', texthl = 'LspDiagnosticsDefaultWarning'})
 vim.fn.sign_define('LspDiagnosticsSignInformation',
-                   {text = '', texthl = 'LspDiagnosticsDefaultInformation'})
+    {text = '', texthl = 'LspDiagnosticsDefaultInformation'})
 vim.fn.sign_define('LspDiagnosticsSignHint',
-                   {text = '', texthl = 'LspDiagnosticsDefaultHint'})
+    {text = '', texthl = 'LspDiagnosticsDefaultHint'})
