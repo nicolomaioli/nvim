@@ -55,8 +55,8 @@ return require('packer').startup(function(use)
     }
 
     use 'tpope/vim-commentary'
-    use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
+    use {'tpope/vim-fugitive', config = require('plugins.vim-fugitive')}
 
     use {'dracula/vim', as = 'dracula'}
 
