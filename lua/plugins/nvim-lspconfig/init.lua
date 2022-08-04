@@ -7,7 +7,10 @@ capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 local M = {
     ['sumneko_lua'] = require('plugins.nvim-lspconfig.lua-language-server'),
     ['tsserver'] = require('plugins.nvim-lspconfig.tsserver'),
-    ['efm'] = require('plugins.nvim-lspconfig.efm-langserver')
+    ['efm'] = require('plugins.nvim-lspconfig.efm-langserver'),
+    ['yamlls'] = require('plugins.nvim-lspconfig.yaml-language-server'),
+    ['gopls'] = require('plugins.nvim-lspconfig.gopls'),
+    ['terraformls'] = require('plugins.nvim-lspconfig.terraformls')
 }
 
 for k, v in pairs(M) do
