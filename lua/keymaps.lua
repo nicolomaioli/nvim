@@ -3,6 +3,7 @@ local set = vim.keymap.set
 set('n', '<leader>sd', ':let @/=""<CR>')
 set('n', '<leader>sr', ':%s/')
 set('n', '<leader>xx', ':source %<CR>')
+set('n', '<leader>cl', ':close<CR>')
 
 set('n', '<leader>wh', '<C-w>h')
 set('n', '<leader>wj', '<C-w>j')
