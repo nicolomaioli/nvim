@@ -10,7 +10,8 @@ local M = {
     ['efm'] = require('plugins.nvim-lspconfig.efm-langserver'),
     ['yamlls'] = require('plugins.nvim-lspconfig.yaml-language-server'),
     ['gopls'] = require('plugins.nvim-lspconfig.gopls'),
-    ['terraformls'] = require('plugins.nvim-lspconfig.terraformls')
+    ['terraformls'] = require('plugins.nvim-lspconfig.terraformls'),
+    ['pyright'] = require('plugins.nvim-lspconfig.pyright')
 }
 
 for k, v in pairs(M) do
