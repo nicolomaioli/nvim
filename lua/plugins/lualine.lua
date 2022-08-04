@@ -9,7 +9,8 @@ require('lualine').setup({
     sections = {
         lualine_a = {'mode', 'paste'},
         lualine_b = {
-            {'branch', icon = ''}, {
+            {'branch', icon = ''},
+            {
                 'diff',
                 color_added = '#a7c080',
                 color_modified = '#ffdf1b',
@@ -17,9 +18,11 @@ require('lualine').setup({
             }
         },
         lualine_c = {
-            {'diagnostics', sources = {'nvim_diagnostic'}}, function()
+            {'diagnostics', sources = {'nvim_diagnostic'}},
+            function()
                 return '%='
-            end, 'filename'
+            end,
+            'filename'
         },
         lualine_x = {'filetype'},
         lualine_y = {{'progress'}},
