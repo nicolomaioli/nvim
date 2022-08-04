@@ -20,16 +20,37 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = function()
+            require('plugins.nvim-treesitter')
+        end
+    }
+
+    use {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        config = function()
+            require('plugins.nvim-treesitter-textobjects')
+        end
+    }
+
+    use 'nvim-treesitter/playground'
+
+    use {
         'nvim-telescope/telescope.nvim',
         requires = {'nvim-lua/plenary.nvim'},
-        config = require('plugins.telescope')
+        config = function()
+            require('plugins.telescope')
+        end
     }
 
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {'kyazdani42/nvim-web-devicons'},
         tag = 'nightly',
-        config = require('plugins.nvim-tree')
+        config = function()
+            require('plugins.nvim-tree')
+        end
     }
 
     use {
@@ -42,7 +63,9 @@ return require('packer').startup(function(use)
             {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
             {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'}
         },
-        config = require('plugins.nvim-cmp')
+        config = function()
+            require('plugins.nvim-cmp')
+        end
 
     }
 
@@ -51,18 +74,35 @@ return require('packer').startup(function(use)
     use {
         'neovim/nvim-lspconfig',
         requires = {'hrsh7th/cmp-nvim-lsp'},
-        config = require('plugins.nvim-lspconfig')
+        config = function()
+            require('plugins.nvim-lspconfig')
+        end
     }
 
     use 'tpope/vim-commentary'
     use 'tpope/vim-surround'
-    use {'tpope/vim-fugitive', config = require('plugins.vim-fugitive')}
+    use {
+        'tpope/vim-fugitive',
+        config = function()
+            require('plugins.vim-fugitive')
+        end
+    }
 
     use {'dracula/vim', as = 'dracula'}
 
-    use {'hoob3rt/lualine.nvim', config = require('plugins.lualine')}
+    use {
+        'hoob3rt/lualine.nvim',
+        config = function()
+            require('plugins.lualine')
+        end
+    }
 
-    use {'windwp/nvim-autopairs', config = require('plugins.nvim-autopairs')}
+    use {
+        'windwp/nvim-autopairs',
+        config = function()
+            require('plugins.nvim-autopairs')
+        end
+    }
 
     if Bootstrap then require('packer').sync() end
 end)
