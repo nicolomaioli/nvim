@@ -17,6 +17,8 @@ local lua_format = {
     formatStdin = true
 }
 
+local python_black = {formatCommand = 'black --quiet -', formatStdin = true}
+
 local M = {
     on_attach = function(client)
         client.resolved_capabilities.document_formatting = true
@@ -35,7 +37,8 @@ local M = {
             typescriptreact = {prettier, eslint},
             css = {prettier},
             html = {prettier},
-            json = {prettier}
+            json = {prettier},
+            python = {python_black}
         }
     },
     filetypes = {
@@ -46,7 +49,8 @@ local M = {
         'typescriptreact',
         'css',
         'html',
-        'json'
+        'json',
+        'python'
     }
 }
 
