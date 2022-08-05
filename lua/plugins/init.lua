@@ -79,6 +79,7 @@ return require('packer').startup(function(use)
         end
     }
 
+    use 'mhinz/vim-signify'
     use 'tpope/vim-commentary'
     use 'tpope/vim-surround'
     use {
