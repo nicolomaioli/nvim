@@ -68,7 +68,12 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {'mfussenegger/nvim-dap'}
+    use {
+        'mfussenegger/nvim-dap',
+        config = function()
+            require('plugins.nvim-dap')
+        end
+    }
 
     use {
         'kyazdani42/nvim-tree.lua',
