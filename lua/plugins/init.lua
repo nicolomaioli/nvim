@@ -35,24 +35,6 @@ return require('packer').startup(function(use)
     }
 
     use 'nvim-treesitter/playground'
-
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
-        config = function()
-            require('plugins.telescope')
-        end
-    }
-
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = {'kyazdani42/nvim-web-devicons'},
-        tag = 'nightly',
-        config = function()
-            require('plugins.nvim-tree')
-        end
-    }
-
     use {
         'hrsh7th/nvim-cmp',
         requires = {
@@ -66,7 +48,6 @@ return require('packer').startup(function(use)
         config = function()
             require('plugins.nvim-cmp')
         end
-
     }
 
     use {'hrsh7th/cmp-nvim-lsp'}
@@ -76,6 +57,25 @@ return require('packer').startup(function(use)
         requires = {'hrsh7th/cmp-nvim-lsp'},
         config = function()
             require('plugins.nvim-lspconfig')
+        end
+    }
+
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {'nvim-lua/plenary.nvim'},
+        config = function()
+            require('plugins.telescope')
+        end
+    }
+
+    use {'mfussenegger/nvim-dap'}
+
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {'kyazdani42/nvim-web-devicons'},
+        tag = 'nightly',
+        config = function()
+            require('plugins.nvim-tree')
         end
     }
 
