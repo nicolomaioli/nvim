@@ -111,7 +111,13 @@ return require('packer').startup(function(use)
         end
     }
 
-    use 'mhinz/vim-signify'
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('plugins.gitsigns-nvim')
+        end
+    }
+
     use 'tpope/vim-commentary'
     use 'tpope/vim-surround'
     use {
