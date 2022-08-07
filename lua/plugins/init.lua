@@ -89,7 +89,17 @@ return require('packer').startup(function(use)
         requires = {'mfussenegger/nvim-dap'},
         config = function()
             require('plugins.nvim-dap-go')
-        end
+        end,
+        ft = 'go'
+    }
+
+    use {
+        'mfussenegger/nvim-dap-python',
+        requires = {'mfussenegger/nvim-dap'},
+        config = function()
+            require('plugins.nvim-dap-python')
+        end,
+        ft = 'python'
     }
 
     use {
