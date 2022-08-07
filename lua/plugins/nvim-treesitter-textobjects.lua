@@ -13,6 +13,7 @@ require'nvim-treesitter.configs'.setup {
                 ['ik'] = '@conditional.inner',
                 ['al'] = '@loop.outer',
                 ['il'] = '@loop.inner',
+                ['as'] = '@scopename.outer',
                 ['is'] = '@scopename.inner'
             }
         },
