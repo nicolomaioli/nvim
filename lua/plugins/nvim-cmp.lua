@@ -1,5 +1,10 @@
 local cmp = require('cmp')
 
+if (cmp == nil) then
+    print('Could not load nvim-cmp')
+    return
+end
+
 cmp.setup({
     snippet = {
         expand = function(args)
