@@ -80,7 +80,7 @@ return require('packer').startup(function(use)
         'rcarriga/nvim-dap-ui',
         requires = {'mfussenegger/nvim-dap'},
         config = function()
-            require('plugins.nvim-dap-ui')
+            require('plugins.nvim-dap.nvim-dap-ui')
         end
     }
 
@@ -88,7 +88,7 @@ return require('packer').startup(function(use)
         'leoluz/nvim-dap-go',
         requires = {'mfussenegger/nvim-dap'},
         config = function()
-            require('plugins.nvim-dap-go')
+            require('plugins.nvim-dap.nvim-dap-go')
         end,
         ft = 'go'
     }
@@ -97,7 +97,7 @@ return require('packer').startup(function(use)
         'mfussenegger/nvim-dap-python',
         requires = {'mfussenegger/nvim-dap'},
         config = function()
-            require('plugins.nvim-dap-python')
+            require('plugins.nvim-dap.nvim-dap-python')
         end,
         ft = 'python'
     }
