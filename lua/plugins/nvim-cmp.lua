@@ -19,15 +19,7 @@ cmp.setup({
     },
     formatting = {
         fields = {'kind', 'abbr', 'menu'},
-        format = function(entry, vim_item)
-            lspkind.cmp_format({mode = 'symbol_text', maxwidth = 50})(entry,
-                vim_item)
-            local strings = vim.split(lspkind.kind, '%s', {trimempty = true})
-            lspkind.kind = ' ' .. strings[1] .. ' '
-            lspkind.menu = '    (' .. strings[2] .. ')'
-
-            return lspkind
-        end
+        format = lspkind.cmp_format()
     },
     window = {completion = true, documentation = true},
     mapping = cmp.mapping.preset.insert({
@@ -37,7 +29,7 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({select = true})
     }),
-    sources = {{name = 'nvim_lsp'}, {name = 'buffer'}}
+    sources = {{name = 'nvim_lsp'}, {{name = 'path'}}, {name = 'buffer'}}
 })
 
 cmp.setup.cmdline('/', {
@@ -47,5 +39,5 @@ cmp.setup.cmdline('/', {
 
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
+    sources = cmp.config.sources({{name = 'cmdline'}}, {{name = 'path'}})
 })
