@@ -77,6 +77,14 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'leoluz/nvim-dap-go',
+        requires = {'mfussenegger/nvim-dap'},
+        config = function()
+            require('plugins.nvim-dap-go')
+        end
+    }
+
+    use {
         'kyazdani42/nvim-tree.lua',
         requires = {'kyazdani42/nvim-web-devicons'},
         tag = 'nightly',
