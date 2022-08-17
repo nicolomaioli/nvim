@@ -102,6 +102,11 @@
       cmd: "go install golang.org/x/tools/gopls@latest"
       creates: "{{ lookup('ansible.builtin.env', 'HOME') }}/go/bin/gopls"
 
+  - name: "install efm-langserver"
+    command: 
+      cmd: "go install github.com/mattn/efm-langserver@latest"
+      creates: "{{ lookup('ansible.builtin.env', 'HOME') }}/go/bin/efm-langserver"
+
   - name: "install pyright"
     community.general.npm:
       global: yes
