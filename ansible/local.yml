@@ -32,9 +32,10 @@
   - name: "terraform fedora dnf add hashicorp repo"
     become: yes
     yum_repository:
-      name: hashicorp
-      description: Hashicorp repository
-      baseurl: https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+      name: Hashicorp Stable - $basearch
+      baseurl: https://rpm.releases.hashicorp.com/fedora/$releasever/$basearch/stable
+      gpgcheck: yes
+      gpgkey: https://rpm.releases.hashicorp.com/gpg
     when: ansible_distribution == 'Fedora'
 
   - name: "terraform dnf install"
