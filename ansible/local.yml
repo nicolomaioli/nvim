@@ -2,6 +2,10 @@
 - hosts: localhost
   connection: local
 
+  vars:
+    user: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+
   tasks:
   - name: "install base"
     become: yes
@@ -21,13 +25,13 @@
   - name: "install oh-my-zsh"
     git:
       repo: "https://github.com/robbyrussell/oh-my-zsh"
-      dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.oh-my-zsh"
+      dest: "{{ home }}/.oh-my-zsh"
       version: master
       update: yes
 
   - name: "update .zshrc"
     lineinfile:
-      name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
+      name: "{{ home }}/.zshrc"
       line: '{{ item }}'
       state: present
     with_items:
@@ -39,7 +43,7 @@
   - name: "zsh set default shell"
     become: yes
     user:
-      name: "{{ lookup('ansible.builtin.env', 'USER') }}"
+      name: "{{ user }}"
       shell: /bin/zsh
 
   # go
@@ -50,7 +54,7 @@
 
   - name: "go setup zsh"
     lineinfile:
-      name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
+      name: "{{ home }}/.zshrc"
       line: 'export PATH="$HOME/go/bin:$PATH"'
       state: present
 
@@ -83,7 +87,7 @@
     register: fnm
     check_mode: no
     stat:
-      path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.fnm/fnm"
+      path: "{{ home }}/.fnm/fnm"
 
   - name: "fnm download"
     when: not fnm.stat.exists
@@ -94,11 +98,11 @@
   - name: "fnm install"
     command:
       cmd: bash /tmp/fnm-installer.sh --skip-shell
-      creates: "{{ lookup('ansible.builtin.env', 'HOME') }}/.fnm/fnm"
+      creates: "{{ home }}/.fnm/fnm"
 
   - name: "fnm setup zsh"
     lineinfile:
-      name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
+      name: "{{ home }}/.zshrc"
       line: '{{ item }}'
       state: present
     with_items:
@@ -124,12 +128,12 @@
   - name: "install gopls"
     command: 
       cmd: "go install golang.org/x/tools/gopls@latest"
-      creates: "{{ lookup('ansible.builtin.env', 'HOME') }}/go/bin/gopls"
+      creates: "{{ home }}/go/bin/gopls"
 
   - name: "install efm-langserver"
     command: 
       cmd: "go install github.com/mattn/efm-langserver@latest"
-      creates: "{{ lookup('ansible.builtin.env', 'HOME') }}/go/bin/efm-langserver"
+      creates: "{{ home }}/go/bin/efm-langserver"
 
   - name: "install pyright"
     community.general.npm:
