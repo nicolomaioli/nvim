@@ -27,12 +27,15 @@
       - python3-pip
 
 ## terraform
-  - name: "terraform dnf add hashicorp repo"
+
+### Add Fedora repo
+  - name: "terraform fedora dnf add hashicorp repo"
     become: yes
     yum_repository:
       name: hashicorp
       description: Hashicorp repository
-      baseurl: https://rpm.releases.hashicorp.com/$release/hashicorp.repo
+      baseurl: https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+    when: ansible_distribution == 'Fedora'
 
   - name: "terraform dnf install"
     become: yes
