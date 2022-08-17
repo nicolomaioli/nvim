@@ -26,9 +26,12 @@
       - python3
       - python3-pip
 
-## terraform
+  - name: "install nodejs"
+    become: yes
+    package:
+      name: nodejs
 
-### Add Fedora repo
+  # terraform
   - name: "terraform fedora dnf add hashicorp repo"
     become: yes
     yum_repository:
@@ -45,7 +48,7 @@
       update_cache: yes
       name: terraform
 
-## fnm
+  # fnm
   - name: "fnm check installed"
     register: fnm
     check_mode: no
