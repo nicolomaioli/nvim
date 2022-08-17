@@ -14,7 +14,7 @@
   tasks:
   - name: print system
     debug:
-      msg: {{ ansible_system }}
+      msg: "{{ ansible_system }}"
 
   - name: "install base"
     become: yes
