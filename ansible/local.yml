@@ -27,7 +27,7 @@
     register: fnm
     check_mode: no
     stat:
-      path: "'{{ lookup('ansible.builtin.env', 'HOME') }}'/.fnm/fnm"
+      path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.fnm/fnm"
 
   - name: "fnm download"
     when: not fnm.stat.exists
@@ -41,7 +41,7 @@
 
   - name: "fnm check .zshrc contains PATH"
     lineinfile:
-      name: "'{{ lookup('ansible.builtin.env', 'HOME') }}'/.zshrc"
+      name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
       line: 'export PATH="$HOME/.fnm:$PATH'
       state: present
     check_mode: yes
@@ -50,7 +50,7 @@
 
   - name: "fnm check .zshrc contains eval"
     lineinfile:
-      name: "'{{ lookup('ansible.builtin.env', 'HOME') }}'/.zshrc"
+      name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
       line: 'eval $(fnm env --use-on-cd)'
       state: present
     check_mode: yes
