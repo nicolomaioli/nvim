@@ -3,19 +3,13 @@
   connection: local
 
   vars:
-    user: "{{ lookup('ansible.builtin.env', 'USER') }}"
-    home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
-    # system:
-    # arch:
     lua_language_server:
+      system: linux
+      arch: x64
       version: 3.5.3
 # https://github.com/sumneko/lua-language-server/releases/download/3.5.3/lua-language-server-3.5.3-linux-x64.tar.gz
 
   tasks:
-  - name: print system
-    debug:
-      msg: "{{ ansible_system }}"
-
   - name: "install base"
     become: yes
     package:
@@ -34,25 +28,25 @@
   - name: "install oh-my-zsh"
     git:
       repo: "https://github.com/robbyrussell/oh-my-zsh"
-      dest: "{{ home }}/.oh-my-zsh"
+      dest: "{{ ansible_user_dir }}/.oh-my-zsh"
       version: master
       update: yes
 
   - name: "update .zshrc"
     lineinfile:
-      name: "{{ home }}/.zshrc"
+      name: "{{ ansible_user_dir }}/.zshrc"
       line: '{{ item }}'
       state: present
     with_items:
       - 'export EDITOR=nvim'
-      - 'export ZSH="$HOME/.oh-my-zsh"'
+      - 'export ZSH="$ansible_user_dir/.oh-my-zsh"'
       - 'ZSH_THEME=robbyrussell'
       - 'source $ZSH/oh-my-zsh.sh'
 
   - name: "zsh set default shell"
     become: yes
     user:
-      name: "{{ user }}"
+      name: "{{ ansible_user_id}}"
       shell: /bin/zsh
 
   # go
@@ -63,7 +57,7 @@
 
   - name: "go setup zsh"
     lineinfile:
-      name: "{{ home }}/.zshrc"
+      name: "{{ ansible_user_dir }}/.zshrc"
       line: 'export PATH="$HOME/go/bin:$PATH"'
       state: present
 
@@ -74,6 +68,12 @@
       name:
       - python3
       - python3-pip
+
+  - name: "python setup zsh"
+    lineinfile:
+      name: "{{ ansible_user_dir }}/.zshrc"
+      line: 'export PATH="$HOME/.local/bin:$PATH"'
+      state: present
 
   # terraform
   - name: "terraform fedora dnf add hashicorp repo"
@@ -96,7 +96,7 @@
     register: fnm
     check_mode: no
     stat:
-      path: "{{ home }}/.fnm/fnm"
+      path: "{{ ansible_user_dir }}/.fnm/fnm"
 
   - name: "fnm download"
     when: not fnm.stat.exists
@@ -107,11 +107,11 @@
   - name: "fnm install"
     command:
       cmd: bash /tmp/fnm-installer.sh --skip-shell
-      creates: "{{ home }}/.fnm/fnm"
+      creates: "{{ ansible_user_dir }}/.fnm/fnm"
 
   - name: "fnm setup zsh"
     lineinfile:
-      name: "{{ home }}/.zshrc"
+      name: "{{ ansible_user_dir }}/.zshrc"
       line: '{{ item }}'
       state: present
     with_items:
@@ -137,12 +137,12 @@
   - name: "install gopls"
     command: 
       cmd: "go install golang.org/x/tools/gopls@latest"
-      creates: "{{ home }}/go/bin/gopls"
+      creates: "{{ ansible_user_dir }}/go/bin/gopls"
 
   - name: "install efm-langserver"
     command: 
       cmd: "go install github.com/mattn/efm-langserver@latest"
-      creates: "{{ home }}/go/bin/efm-langserver"
+      creates: "{{ ansible_user_dir }}/go/bin/efm-langserver"
 
   - name: "install pyright"
     community.general.npm:
