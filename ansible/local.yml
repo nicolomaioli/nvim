@@ -99,3 +99,23 @@
 
   - name: "install gopls"
     command: "go install golang.org/x/tools/gopls@latest"
+
+  - name: "install pyright"
+    community.general.npm:
+      global: yes
+      name: pyright
+
+  - name: "install eslint_d"
+    community.general.npm:
+      global: yes
+      name: eslint_d
+
+  - name: "install prettier"
+    community.general.npm:
+      global: yes
+      name: prettier
+
+  - name: "install typescript"
+    community.general.npm:
+      global: yes
+      name: typescript
