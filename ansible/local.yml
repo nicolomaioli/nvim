@@ -5,8 +5,17 @@
   vars:
     user: "{{ lookup('ansible.builtin.env', 'USER') }}"
     home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+    # system:
+    # arch:
+    lua_language_server:
+      version: 3.5.3
+# https://github.com/sumneko/lua-language-server/releases/download/3.5.3/lua-language-server-3.5.3-linux-x64.tar.gz
 
   tasks:
+  - name: print system
+    debug:
+      msg: {{ ansible_system }}
+
   - name: "install base"
     become: yes
     package:
