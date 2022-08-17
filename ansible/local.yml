@@ -3,7 +3,7 @@
   connection: local
 
   tasks:
-  - name: install base
+  - name: "install base"
     become: yes
     package:
       name:
@@ -13,18 +13,19 @@
       - neovim
       - ripgrep
 
-  - name: install go, python, terraform
+  - name: "install go, python, terraform"
     become: yes
     package:
+      name:
       - golang
       - python3
       - python3-pip
       - terraform
 
-  - name: install fnm
+  - name: "install fnm"
     shell: curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 
-  - name: configure fnm on zsh
+  - name: "configure fnm on zsh"
     shell: |
       echo export PATH=\"\$HOME/.fnm:PATH\" >> .zshrc
       echo eval \"\$\(fnm env --use-on-cd\)\" >> .zshrc
