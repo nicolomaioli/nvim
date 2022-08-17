@@ -2,6 +2,16 @@
 
 Current nvim configuration in lua.
 
+## Ansible
+
+Use the included Ansible playbook to install all dependencies:
+
+```sh
+ansible-pull -K --accept-host-key -U git@github.com:nicolomaioli/nvim.git ansible/local.yml
+```
+
+Optionally add the `-C` flag to checkout a specific branch.
+
 ## lsp
 
 - gopls
