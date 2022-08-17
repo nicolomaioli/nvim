@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: install base
+    package:
+      name:
+      - neovim
+      - ripgrep
+      - golang
+      - python3
+      - python3-pip

@@ -1,2 +1,6 @@
+# neovim plugins
 plugin/
 vendors/
+
+# ansible
+*.retry
