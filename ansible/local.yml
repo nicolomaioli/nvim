@@ -33,6 +33,7 @@
     become: yes
     yum_repository:
       name: Hashicorp Stable - $basearch
+      description: hashicorp
       baseurl: https://rpm.releases.hashicorp.com/fedora/$releasever/$basearch/stable
       gpgcheck: yes
       gpgkey: https://rpm.releases.hashicorp.com/gpg
