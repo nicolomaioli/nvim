@@ -83,3 +83,8 @@
     community.general.npm:
       global: yes
       name: yaml-language-server
+
+  - name: "install terraform-ls"
+    become: yes
+    package:
+      name: terraform-ls
