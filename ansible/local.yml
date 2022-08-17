@@ -25,6 +25,7 @@
 
   - name: "fnm check installed"
     register: fnm
+    check_mode: no
     stat:
       path: "'{{ lookup('ansible.builtin.env', 'HOME') }}'/.fnm/fnm"
 
