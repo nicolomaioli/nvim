@@ -34,9 +34,10 @@
       description: Hashicorp repository
       baseurl: https://rpm.releases.hashicorp.com/$release/hashicorp.repo
 
-  - name: "install terraform"
+  - name: "terraform dnf install"
     become: yes
-    package:
+    dnf:
+      update_cache: yes
       name: terraform
 
 ## fnm
