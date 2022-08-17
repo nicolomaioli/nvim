@@ -8,6 +8,7 @@
     package:
       name:
       - bash
+      - zsh
       - curl
       - unzip
       - wget
@@ -69,17 +70,14 @@
       cmd: bash /tmp/fnm-installer.sh --skip-shell
       creates: "{{ lookup('ansible.builtin.env', 'HOME') }}/.fnm/fnm"
 
-  - name: "fnm ensure .zshrc contains PATH"
+  - name: "fnm setup zsh"
     lineinfile:
       name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
-      line: 'export PATH="$HOME/.fnm:$PATH"'
+      line: '{{ item }}'
       state: present
-
-  - name: "fnm ensure .zshrc contains eval"
-    lineinfile:
-      name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
-      line: 'eval "$(fnm env --use-on-cd)"'
-      state: present
+    with_items:
+      - 'export PATH="$HOME/.fnm:$PATH"'
+      - 'eval "$(fnm env --use-on-cd)"'
 
   - name: "fnm install lts"
     command: "fnm install --lts"
