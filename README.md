@@ -4,6 +4,12 @@ Current nvim configuration in lua.
 
 ## Ansible
 
+After installing Ansible, add the `community-general` collection:
+
+```sh
+ansible-galaxy collection install community.general
+```
+
 Use the included Ansible playbook to install all dependencies:
 
 ```sh

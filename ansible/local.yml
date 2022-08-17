@@ -77,3 +77,9 @@
       name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
       line: 'eval $(fnm env --use-on-cd)'
       state: present
+
+  # LSP
+  - name: "npm install yaml-language-server"
+    community.general.npm:
+      global: yes
+      name: yaml-language-server
