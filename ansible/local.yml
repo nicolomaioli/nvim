@@ -98,7 +98,9 @@
       name: terraform-ls
 
   - name: "install gopls"
-    command: "go install golang.org/x/tools/gopls@latest"
+    command: 
+      cmd: "go install golang.org/x/tools/gopls@latest"
+      creates: "{{ lookup('ansible.builtin.env', 'HOME') }}/go/bin/gopls"
 
   - name: "install pyright"
     community.general.npm:
