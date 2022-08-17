@@ -26,11 +26,6 @@
       - python3
       - python3-pip
 
-  - name: "install nodejs"
-    become: yes
-    package:
-      name: nodejs
-
   # terraform
   - name: "terraform fedora dnf add hashicorp repo"
     become: yes
@@ -69,17 +64,16 @@
   - name: "fnm ensure .zshrc contains PATH"
     lineinfile:
       name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
-      line: 'export PATH="$HOME/.fnm:$PATH'
+      line: 'export PATH="$HOME/.fnm:$PATH"'
       state: present
 
   - name: "fnm ensure .zshrc contains eval"
     lineinfile:
       name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
-      line: 'eval $(fnm env --use-on-cd)'
+      line: 'eval "$(fnm env --use-on-cd)"'
       state: present
 
-  # LSP
-  - name: "npm install yaml-language-server"
-    community.general.npm:
-      global: yes
-      name: yaml-language-server
+  - name: "fnm install lts"
+    command: "fnm install --lts"
+    # always install the latest lts
+    when: true
