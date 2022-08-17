@@ -27,6 +27,7 @@
       line: 'export PATH="$HOME/go/bin:$PATH"'
       state: present
 
+  # python
   - name: "install python3"
     become: yes
     package:
@@ -95,3 +96,6 @@
     become: yes
     package:
       name: terraform-ls
+
+  - name: "install gopls"
+    command: "go install golang.org/x/tools/gopls@latest"
