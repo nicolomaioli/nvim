@@ -9,6 +9,7 @@
       name:
       - bash
       - curl
+      - unzip
       - wget
       - neovim
       - ripgrep
@@ -38,7 +39,7 @@
   - name: "fnm install"
     when: not fnm.stat.exists
     command:
-      cmd: bash -s /tmp/fnm-installer.sh --skip-shell
+      cmd: bash /tmp/fnm-installer.sh --skip-shell
       creates: "{{ lookup('ansible.builtin.env', 'HOME') }}/.fnm/fnm"
 
   - name: "fnm ensure .zshrc contains PATH"
