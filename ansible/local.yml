@@ -12,9 +12,35 @@
       - curl
       - unzip
       - wget
+      - git
       - ripgrep
       - fzf
       - neovim
+
+  # oh-my-zsh
+  - name: "install oh-my-zsh"
+    git:
+      repo: "https://github.com/robbyrussell/oh-my-zsh"
+      dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.oh-my-zsh"
+      version: master
+      update: yes
+
+  - name: "update .zshrc"
+    lineinfile:
+      name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
+      line: '{{ item }}'
+      state: present
+    with_items:
+      - 'export EDITOR=nvim'
+      - 'export ZSH="$HOME/.oh-my-zsh"'
+      - 'export ZSH_THEME=robbyrussell'
+      - 'source "$ZSH/oh-my-zsh.sh"'
+
+  - name: "zsh set default shell"
+    become: yes
+    user:
+      name: "{{ lookup('ansible.builtin.env', 'USER') }}"
+      shell: /bin/zsh
 
   # go
   - name: "install go"
@@ -22,7 +48,7 @@
     package:
       name: golang
 
-  - name: "go ensure .zshrc contains PATH"
+  - name: "go setup zsh"
     lineinfile:
       name: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
       line: 'export PATH="$HOME/go/bin:$PATH"'
