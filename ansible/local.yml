@@ -38,10 +38,9 @@
       gpgkey: https://rpm.releases.hashicorp.com/gpg
     when: ansible_distribution == 'Fedora'
 
-  - name: "terraform dnf install"
+  - name: "install terraform"
     become: yes
-    dnf:
-      update_cache: yes
+    package:
       name: terraform
 
   # fnm
@@ -79,6 +78,7 @@
     # always install the latest lts
     when: true
 
+  # LSP
   - name: "npm install yaml-language-server"
     community.general.npm:
       global: yes
