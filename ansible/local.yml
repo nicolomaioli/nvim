@@ -20,7 +20,8 @@
       - golang
       - python3
       - python3-pip
-      - terraform
+      # Skip terraform because we need to add the repo first
+      # - terraform
 
   - name: "fnm check installed"
     register: fnm
