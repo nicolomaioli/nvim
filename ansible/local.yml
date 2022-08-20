@@ -178,6 +178,7 @@
       name:
         - ninja-build
         - gcc-c++
+        - libstdc++-static
         - libstdc++-devel
     when: ansible_distribution == 'Fedora'
 
