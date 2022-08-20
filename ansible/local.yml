@@ -171,3 +171,10 @@
       version: master
       recursive: yes
       update: yes
+
+  - name: "install lua-language-server dependencies fedora"
+    become: yes
+    package:
+      name:
+        - ninja-build
+    when: ansible_distribution == 'Fedora'
