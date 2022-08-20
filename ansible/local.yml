@@ -35,11 +35,12 @@
       - 'export ZSH="$HOME/.oh-my-zsh"'
       - 'ZSH_THEME=robbyrussell'
       - 'source $ZSH/oh-my-zsh.sh'
+      - 'source /usr/share/fzf/shell/key-bindings.zsh'
 
   - name: "zsh set default shell"
     become: yes
     user:
-      name: "{{ ansible_user_id}}"
+      name: "{{ ansible_user_id }}"
       shell: /bin/zsh
 
   # go
