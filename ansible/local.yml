@@ -161,3 +161,12 @@
     community.general.npm:
       global: yes
       name: typescript
+
+  - name: "clone lua-language-server"
+    git:
+      repo: "https://github.com/sumneko/lua-language-server"
+      dest: "/usr/local/src"
+      depth: 1
+      version: master
+      recursive: yes
+      update: yes
