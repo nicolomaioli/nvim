@@ -114,7 +114,6 @@
 
   - name: "fnm install lts"
     command: "fnm install --lts"
-    # always install the latest lts
     when: true
 
   # LSP
