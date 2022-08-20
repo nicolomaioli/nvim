@@ -177,4 +177,13 @@
     package:
       name:
         - ninja-build
+        - gcc-c++
+        - libstdc++-devel
     when: ansible_distribution == 'Fedora'
+
+  # - name: "luamake lua-language-server"
+  #   become: yes
+  #   command:
+  #     chdir: "/usr/local/src/lua-language-server/3rd/luamake"
+  #     cmd: "./compile/install.sh"
+
