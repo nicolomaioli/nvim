@@ -182,9 +182,16 @@
         - libstdc++-devel
     when: ansible_distribution == 'Fedora'
 
-  # - name: "luamake lua-language-server"
-  #   become: yes
-  #   command:
-  #     chdir: "/usr/local/src/lua-language-server/3rd/luamake"
-  #     cmd: "./compile/install.sh"
+  - name: "build lua-language-server"
+    become: yes
+    command:
+      chdir: "/usr/local/src/lua-language-server/3rd/luamake"
+      cmd: "./compile/install.sh"
+      creates: "/usr/local/src/lua-language-server/3rd/luamake/build"
 
+  - name: "luamake rebuild lua-language-server"
+    become: yes
+    command:
+      chdir: "/usr/local/src/lua-language-server"
+      cmd: "./3rd/luamake/luamake rebuild"
+      creates: "/usr/local/src/lua-language-server/bin"
