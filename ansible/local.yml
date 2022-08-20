@@ -196,6 +196,13 @@
       cmd: "./3rd/luamake/luamake rebuild"
       creates: "/usr/local/src/lua-language-server/bin"
 
+  - name: "make lua-language-server executable"
+    become: yes
+    file:
+      dest: "/usr/local/bin/lua-language-server"
+      state: touch
+      mode: "a+x"
+
   - name: "add lua-language-server to path"
     become: yes
     lineinfile:
@@ -205,9 +212,3 @@
     with_items:
       - '#!/bin/bash'
       - 'exec "/usr/local/src/lua-language-server/bin/lua-language-server" "$@"'
-
-  - name: "make lua-language-server executable"
-    become: yes
-    file:
-      dest: "/usr/local/bin/lua-language-server"
-      mode: a+x
