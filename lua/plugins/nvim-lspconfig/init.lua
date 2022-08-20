@@ -5,6 +5,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 local M = {
+	['ansiblels'] = require('plugins.nvim-lspconfig.ansible-language-server'),
     ['sumneko_lua'] = require('plugins.nvim-lspconfig.lua-language-server'),
     ['tsserver'] = require('plugins.nvim-lspconfig.tsserver'),
     ['efm'] = require('plugins.nvim-lspconfig.efm-langserver'),
