@@ -163,6 +163,7 @@
       name: typescript
 
   - name: "clone lua-language-server"
+    become: yes
     git:
       repo: "https://github.com/sumneko/lua-language-server"
       dest: "/usr/local/src"
