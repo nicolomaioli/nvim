@@ -166,7 +166,7 @@
     become: yes
     git:
       repo: "https://github.com/sumneko/lua-language-server"
-      dest: "/usr/local/src"
+      dest: "/usr/local/src/lua-language-server"
       depth: 1
       version: master
       recursive: yes
