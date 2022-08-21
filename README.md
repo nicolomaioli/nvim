@@ -18,20 +18,32 @@ ansible-pull -K --accept-host-key -U git@github.com:nicolomaioli/nvim.git ansibl
 
 Optionally add the `-C` flag to checkout a specific branch.
 
-## lsp
+## LSP, DAP, Formatters, and Linters
 
+See `h: mason`, configuration is done manually because I didn't like the
+overhead of `mason-lspconfig`.
+
+### LSP
+
+- ansible-language-server
 - gopls
-- yaml-language-server
 - lua-language-server
-- terraform-ls
-- tsserver
 - pyright
-- efm-langserver
-	- eslint_d
-	- prettier
-	- black
-	- lua-format
+- terraform-ls
+- typescript-language-server
+- yaml-language-server
 
-## lua-language-server
+### DAP
 
-Create a `vendors` folder, clone the repo and build it.
+- delve
+- debugpy
+
+### Formatter
+
+- black
+- prettierd
+- luaformatter
+
+### Linter
+
+- eslint_d
