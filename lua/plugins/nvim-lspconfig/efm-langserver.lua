@@ -13,7 +13,7 @@ local prettier = {
 }
 
 local lua_format = {
-    formatCommand = 'lua-format -i --chop-down-table --no-align-table-field --chop-down-kv-table --chop-down-parameter --no-align-parameter --no-align-args --double-quote-to-single-quote --no-use-tab --no-keep-simple-function-one-line --no-break-after-operator --column-limit=80 --break-after-table-lb',
+    formatCommand = 'lua-format -i --chop-down-table --no-align-table-field --chop-down-kv-table --chop-down-parameter --no-align-parameter --no-align-args --double-quote-to-single-quote --no-use-tab --no-keep-simple-function-one-line --no-keep-simple-control-block-one-line --no-break-after-operator --column-limit=80 --break-after-table-lb',
     formatStdin = true
 }
 

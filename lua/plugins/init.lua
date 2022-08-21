@@ -143,5 +143,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    if Bootstrap then require('packer').sync() end
+    if Bootstrap then
+        require('packer').sync()
+    end
 end)
