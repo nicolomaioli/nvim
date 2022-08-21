@@ -5,8 +5,8 @@ telescope.setup {
     pickers = {
         find_files = {
             find_command = {'rg', '--files', '--iglob', '!.git', '--hidden'},
-            previewer = false
-        }
+            previewer = false,
+        },
     },
     defaults = {
         vimgrep_arguments = {
@@ -18,9 +18,9 @@ telescope.setup {
             '--with-filename',
             '--line-number',
             '--column',
-            '--smart-case'
-        }
-    }
+            '--smart-case',
+        },
+    },
 }
 
 local load_mappings = function()

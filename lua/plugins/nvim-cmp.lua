@@ -15,11 +15,11 @@ cmp.setup({
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body)
-        end
+        end,
     },
     formatting = {
         fields = {'kind', 'abbr', 'menu'},
-        format = lspkind.cmp_format()
+        format = lspkind.cmp_format(),
     },
     window = {completion = true, documentation = true},
     mapping = cmp.mapping.preset.insert({
@@ -27,17 +27,17 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({select = true})
+        ['<CR>'] = cmp.mapping.confirm({select = true}),
     }),
-    sources = {{name = 'nvim_lsp'}, {{name = 'path'}}, {name = 'buffer'}}
+    sources = {{name = 'nvim_lsp'}, {{name = 'path'}}, {name = 'buffer'}},
 })
 
 cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {{name = 'buffer'}}
+    sources = {{name = 'buffer'}},
 })
 
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({{name = 'cmdline'}}, {{name = 'path'}})
+    sources = cmp.config.sources({{name = 'cmdline'}}, {{name = 'path'}}),
 })

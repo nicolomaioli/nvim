@@ -29,10 +29,10 @@ local M = {
                 '!Select',
                 '!Select sequence',
                 '!Split',
-                '!Split sequence'
-            }
-        }
-    }
+                '!Split sequence',
+            },
+        },
+    },
 }
 
 return M

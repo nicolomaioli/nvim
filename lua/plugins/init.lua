@@ -11,8 +11,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
         'https://github.com/wbthomason/packer.nvim',
         install_path,
     })
-    vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' ..
-                            vim.o.runtimepath
+    vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,'
+                            .. vim.o.runtimepath
 end
 
 vim.cmd [[packadd packer.nvim]]
@@ -74,6 +74,14 @@ return require('packer').startup(function(use)
         config = function()
             require('plugins.nvim-lspconfig')
         end,
+    }
+
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        config = function()
+            require('plugins.null-ls-nvim')
+        end,
+        requires = {'nvim-lua/plenary.nvim'},
     }
 
     use {

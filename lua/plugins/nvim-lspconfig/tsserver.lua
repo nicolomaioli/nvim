@@ -10,8 +10,8 @@ local M = {
         'typescript',
         'typescriptreact',
         'javascript',
-        'javascriptreact'
-    }
+        'javascriptreact',
+    },
 }
 
 return M

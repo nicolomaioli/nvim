@@ -14,25 +14,25 @@ require'nvim-treesitter.configs'.setup {
                 ['al'] = '@loop.outer',
                 ['il'] = '@loop.inner',
                 ['as'] = '@scopename.outer',
-                ['is'] = '@scopename.inner'
-            }
+                ['is'] = '@scopename.inner',
+            },
         },
         swap = {
             enable = true,
             swap_next = {['<leader>sn'] = '@parameter.inner'},
-            swap_previous = {['<leader>sp'] = '@parameter.inner'}
+            swap_previous = {['<leader>sp'] = '@parameter.inner'},
         },
         move = {
             enable = true,
             set_jumps = true,
             goto_next_start = {
                 ['<leader>nf'] = '@function.outer',
-                ['<leader>nc'] = '@class.outer'
+                ['<leader>nc'] = '@class.outer',
             },
             goto_previous_start = {
                 ['<leader>nF'] = '@function.outer',
-                ['<leader>nC'] = '@class.outer'
-            }
-        }
-    }
+                ['<leader>nC'] = '@class.outer',
+            },
+        },
+    },
 }
