@@ -1,20 +1,22 @@
+local lua_format_config = vim.fn.stdpath('config') .. '/lua_format_config.yaml'
+
 local eslint = {
     lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT}',
     lintStdin = true,
     lintFormats = {'%f:%l:%c: %m'},
     lintIgnoreExitCode = true,
     formatCommand = 'eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}',
-    formatStdin = true
+    formatStdin = true,
 }
 
 local prettier = {
     formatCommand = 'prettier --stdin-filepath ${INPUT}',
-    formatStdin = true
+    formatStdin = true,
 }
 
 local lua_format = {
-    formatCommand = 'lua-format -i --chop-down-table --no-align-table-field --chop-down-kv-table --chop-down-parameter --no-align-parameter --no-align-args --double-quote-to-single-quote --no-use-tab --no-keep-simple-function-one-line --no-keep-simple-control-block-one-line --no-break-after-operator --column-limit=80 --break-after-table-lb',
-    formatStdin = true
+    formatCommand = 'lua-format -i -c ' .. lua_format_config,
+    formatStdin = true,
 }
 
 local python_black = {formatCommand = 'black --quiet -', formatStdin = true}
@@ -38,8 +40,8 @@ local M = {
             css = {prettier},
             html = {prettier},
             json = {prettier},
-            python = {python_black}
-        }
+            python = {python_black},
+        },
     },
     filetypes = {
         'lua',
@@ -50,8 +52,8 @@ local M = {
         'css',
         'html',
         'json',
-        'python'
-    }
+        'python',
+    },
 }
 
 return M
