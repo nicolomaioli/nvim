@@ -1,8 +1,8 @@
 # nvim
 
-Current nvim configuration in lua.
-
 ## Ansible
+
+**This is very much in progress and a bit of a mess.**
 
 After installing Ansible, add the `community-general` collection:
 
