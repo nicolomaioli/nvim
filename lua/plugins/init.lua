@@ -9,10 +9,10 @@ if fn.empty(fn.glob(install_path)) > 0 then
         '--depth',
         '1',
         'https://github.com/wbthomason/packer.nvim',
-        install_path
+        install_path,
     })
-    vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,'
-                            .. vim.o.runtimepath
+    vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' ..
+                            vim.o.runtimepath
 end
 
 vim.cmd [[packadd packer.nvim]]
@@ -25,17 +25,18 @@ return require('packer').startup(function(use)
         run = ':TSUpdate',
         config = function()
             require('plugins.nvim-treesitter')
-        end
+        end,
     }
 
     use {
         'nvim-treesitter/nvim-treesitter-textobjects',
         config = function()
             require('plugins.nvim-treesitter-textobjects')
-        end
+        end,
     }
 
     use 'nvim-treesitter/playground'
+
     use {
         'hrsh7th/nvim-cmp',
         requires = {
@@ -45,21 +46,34 @@ return require('packer').startup(function(use)
             {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp'},
             {'hrsh7th/cmp-path', after = 'nvim-cmp'},
             {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
-            {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'}
+            {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'},
         },
         config = function()
             require('plugins.nvim-cmp')
-        end
+        end,
     }
 
     use {'hrsh7th/cmp-nvim-lsp'}
+
+    use {'hrsh7th/cmp-path'}
+
+    use {'hrsh7th/cmp-buffer'}
+
+    use {'hrsh7th/cmp-cmdline'}
+
+    use {
+        'williamboman/mason.nvim',
+        config = function()
+            require('plugins.mason-nvim')
+        end,
+    }
 
     use {
         'neovim/nvim-lspconfig',
         requires = {'hrsh7th/cmp-nvim-lsp'},
         config = function()
             require('plugins.nvim-lspconfig')
-        end
+        end,
     }
 
     use {
@@ -67,14 +81,14 @@ return require('packer').startup(function(use)
         requires = {'nvim-lua/plenary.nvim'},
         config = function()
             require('plugins.telescope')
-        end
+        end,
     }
 
     use {
         'mfussenegger/nvim-dap',
         config = function()
             require('plugins.nvim-dap')
-        end
+        end,
     }
 
     use {
@@ -82,7 +96,7 @@ return require('packer').startup(function(use)
         requires = {'mfussenegger/nvim-dap'},
         config = function()
             require('plugins.nvim-dap.nvim-dap-ui')
-        end
+        end,
     }
 
     use {
@@ -91,7 +105,7 @@ return require('packer').startup(function(use)
         config = function()
             require('plugins.nvim-dap.nvim-dap-go')
         end,
-        ft = 'go'
+        ft = 'go',
     }
 
     use {
@@ -100,7 +114,7 @@ return require('packer').startup(function(use)
         config = function()
             require('plugins.nvim-dap.nvim-dap-python')
         end,
-        ft = 'python'
+        ft = 'python',
     }
 
     use {
@@ -109,23 +123,25 @@ return require('packer').startup(function(use)
         tag = 'nightly',
         config = function()
             require('plugins.nvim-tree')
-        end
+        end,
     }
 
     use {
         'lewis6991/gitsigns.nvim',
         config = function()
             require('plugins.gitsigns-nvim')
-        end
+        end,
     }
 
     use 'tpope/vim-commentary'
+
     use 'tpope/vim-surround'
+
     use {
         'tpope/vim-fugitive',
         config = function()
             require('plugins.vim-fugitive')
-        end
+        end,
     }
 
     use {'dracula/vim', as = 'dracula'}
@@ -134,14 +150,14 @@ return require('packer').startup(function(use)
         'hoob3rt/lualine.nvim',
         config = function()
             require('plugins.lualine')
-        end
+        end,
     }
 
     use {
         'windwp/nvim-autopairs',
         config = function()
             require('plugins.nvim-autopairs')
-        end
+        end,
     }
 
     if bootstrap then
