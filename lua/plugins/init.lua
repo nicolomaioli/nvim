@@ -141,6 +141,8 @@ return require('packer').startup(function(use)
         end,
     }
 
+    use 'pearofducks/ansible-vim'
+
     use 'tpope/vim-commentary'
 
     use 'tpope/vim-surround'
