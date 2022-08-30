@@ -5,13 +5,14 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 local M = {
+    ['dockerls'] = require('plugins.nvim-lspconfig.docker-language-server'),
     ['ansiblels'] = require('plugins.nvim-lspconfig.ansible-language-server'),
+    ['gopls'] = require('plugins.nvim-lspconfig.gopls'),
+    ['pyright'] = require('plugins.nvim-lspconfig.pyright'),
     ['sumneko_lua'] = require('plugins.nvim-lspconfig.lua-language-server'),
+    ['terraformls'] = require('plugins.nvim-lspconfig.terraform-ls'),
     ['tsserver'] = require('plugins.nvim-lspconfig.tsserver'),
     ['yamlls'] = require('plugins.nvim-lspconfig.yaml-language-server'),
-    ['gopls'] = require('plugins.nvim-lspconfig.gopls'),
-    ['terraformls'] = require('plugins.nvim-lspconfig.terraform-ls'),
-    ['pyright'] = require('plugins.nvim-lspconfig.pyright'),
 }
 
 for k, v in pairs(M) do
