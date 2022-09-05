@@ -1,22 +1,7 @@
 # nvim
 
-## Ansible
-
-**This is very much in progress and a bit of a mess.**
-
-After installing Ansible, add the `community-general` collection:
-
-```sh
-ansible-galaxy collection install community.general
-```
-
-Use the included Ansible playbook to install all dependencies:
-
-```sh
-ansible-pull -K --accept-host-key -U git@github.com:nicolomaioli/nvim.git ansible/local.yml
-```
-
-Optionally add the `-C` flag to checkout a specific branch.
+Use the [dotfiles](https://github.com/nicolomaioli/dotfiles) repo to install
+and configure `nvim`.
 
 ## LSP, DAP, Formatters, and Linters
 
