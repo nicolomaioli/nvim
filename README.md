@@ -11,7 +11,7 @@ overhead of `mason-lspconfig`.
 ### LSP
 
 - ansible-language-server
-- docker-language-server
+- dockerfile-language-server
 - gopls
 - lua-language-server
 - pyright
