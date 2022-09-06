@@ -8,6 +8,10 @@ and configure `nvim`.
 See `h: mason`, configuration is done manually because I didn't like the
 overhead of `mason-lspconfig`.
 
+LSP, DAP, formatters and linters are currently installed manually with
+`:MasonInstall`. I know there are ways to automate that but is not enough of an
+ballocking to justify the effort.
+
 ### LSP
 
 - ansible-language-server
