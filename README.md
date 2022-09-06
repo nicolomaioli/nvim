@@ -33,3 +33,4 @@ overhead of `mason-lspconfig`.
 ### Linter
 
 - eslint_d
+- ansible-lint
