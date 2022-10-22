@@ -1,8 +1,6 @@
 local lspconfig = require('lspconfig')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
-local capabilities = cmp_nvim_lsp.default_capabilities()
-
 local M = {
     ['dockerls'] = require('plugins.nvim-lspconfig.docker-language-server'),
     ['ansiblels'] = require('plugins.nvim-lspconfig.ansible-language-server'),
@@ -15,7 +13,7 @@ local M = {
 }
 
 for k, v in pairs(M) do
-    v.capabilities = capabilities
+    v.capabilities = cmp_nvim_lsp.default_capabilities()
     lspconfig[k].setup(v)
 end
 
