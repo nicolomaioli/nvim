@@ -154,7 +154,12 @@ return require('packer').startup(function(use)
         end,
     }
 
-    use {'dracula/vim', as = 'dracula'}
+    use {
+        'olimorris/onedarkpro.nvim',
+        config = function()
+            require('plugins.onedarkpro-nvim')
+        end,
+    }
 
     use {
         'nvim-lualine/lualine.nvim',

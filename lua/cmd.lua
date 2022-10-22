@@ -6,7 +6,7 @@ cmd('silent! helptags ALL')
 
 -- Only load the theme is it's avaialbe
 local colors = vim.fn.getcompletion('', 'color')
-local theme = 'dracula'
+local theme = 'onedarkpro'
 
 for _, v in pairs(colors) do
     if v == theme then
