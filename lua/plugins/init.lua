@@ -69,6 +69,13 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'simrat39/symbols-outline.nvim',
+        config = function()
+            require('plugins.symbols-outline-nvim')
+        end,
+    }
+
+    use {
         'neovim/nvim-lspconfig',
         requires = {'hrsh7th/cmp-nvim-lsp'},
         config = function()
