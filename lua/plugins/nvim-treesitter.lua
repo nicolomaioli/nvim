@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = 'all',
-    ignore_install = {'phpdoc'},
+    ensure_installed = {'lua'},
+    auto_install = true,
     highlight = {enable = true},
     playground = {
         enable = true,
