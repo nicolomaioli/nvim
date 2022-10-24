@@ -182,6 +182,14 @@ return require('packer').startup(function(use)
         end,
     }
 
+    use {
+        'akinsho/toggleterm.nvim',
+        tag = '*',
+        config = function()
+            require('plugins.toggleterm-nvim')
+        end,
+    }
+
     if bootstrap then
         require('packer').sync()
     end
