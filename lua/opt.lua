@@ -32,3 +32,4 @@ opt.omnifunc = ('syntaxcomplete#Complete')
 opt.grepprg = 'rg --vimgrep -S'
 opt.grepformat = '%f:%l:%c:%m'
 opt.laststatus = 3
+opt.pumheight = 10
