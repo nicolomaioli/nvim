@@ -12,7 +12,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
         install_path,
     })
     vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,'
-                            .. vim.o.runtimepath
+        .. vim.o.runtimepath
 end
 
 vim.cmd [[packadd packer.nvim]]
@@ -40,22 +40,22 @@ return require('packer').startup(function(use)
     use {
         'hrsh7th/nvim-cmp',
         requires = {
-            {'L3MON4D3/LuaSnip'},
-            {'onsails/lspkind.nvim'},
-            {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'},
+            { 'L3MON4D3/LuaSnip' },
+            { 'onsails/lspkind.nvim' },
+            { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
         },
         config = function()
             require('plugins.nvim-cmp')
         end,
     }
 
-    use {'hrsh7th/cmp-nvim-lsp'}
+    use { 'hrsh7th/cmp-nvim-lsp' }
 
-    use {'hrsh7th/cmp-path'}
+    use { 'hrsh7th/cmp-path' }
 
-    use {'hrsh7th/cmp-buffer'}
+    use { 'hrsh7th/cmp-buffer' }
 
-    use {'hrsh7th/cmp-cmdline'}
+    use { 'hrsh7th/cmp-cmdline' }
 
     use {
         'williamboman/mason.nvim',
@@ -65,15 +65,15 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'simrat39/symbols-outline.nvim',
+        'stevearc/aerial.nvim',
         config = function()
-            require('plugins.symbols-outline-nvim')
+            require('plugins.aerial')
         end,
     }
 
     use {
         'neovim/nvim-lspconfig',
-        requires = {'hrsh7th/cmp-nvim-lsp'},
+        requires = { 'hrsh7th/cmp-nvim-lsp' },
         config = function()
             require('plugins.nvim-lspconfig')
         end,
@@ -84,12 +84,12 @@ return require('packer').startup(function(use)
         config = function()
             require('plugins.null-ls-nvim')
         end,
-        requires = {'nvim-lua/plenary.nvim'},
+        requires = { 'nvim-lua/plenary.nvim' },
     }
 
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
+        requires = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('plugins.telescope')
         end,
@@ -104,7 +104,7 @@ return require('packer').startup(function(use)
 
     use {
         'rcarriga/nvim-dap-ui',
-        requires = {'mfussenegger/nvim-dap'},
+        requires = { 'mfussenegger/nvim-dap' },
         config = function()
             require('plugins.nvim-dap.nvim-dap-ui')
         end,
@@ -112,7 +112,7 @@ return require('packer').startup(function(use)
 
     use {
         'leoluz/nvim-dap-go',
-        requires = {'mfussenegger/nvim-dap'},
+        requires = { 'mfussenegger/nvim-dap' },
         config = function()
             require('plugins.nvim-dap.nvim-dap-go')
         end,
@@ -121,7 +121,7 @@ return require('packer').startup(function(use)
 
     use {
         'mfussenegger/nvim-dap-python',
-        requires = {'mfussenegger/nvim-dap'},
+        requires = { 'mfussenegger/nvim-dap' },
         config = function()
             require('plugins.nvim-dap.nvim-dap-python')
         end,
@@ -130,7 +130,7 @@ return require('packer').startup(function(use)
 
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = {'kyazdani42/nvim-web-devicons'},
+        requires = { 'kyazdani42/nvim-web-devicons' },
         tag = 'nightly',
         config = function()
             require('plugins.nvim-tree')

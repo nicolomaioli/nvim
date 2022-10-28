@@ -26,7 +26,6 @@ opt.hidden = true
 opt.backup = false
 opt.swapfile = false
 opt.updatetime = 300
-opt.shortmess:append('I')
 opt.signcolumn = 'yes'
 opt.omnifunc = ('syntaxcomplete#Complete')
 opt.grepprg = 'rg --vimgrep -S'
