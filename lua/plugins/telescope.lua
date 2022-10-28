@@ -1,5 +1,6 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
+local actions = require('telescope.actions')
 
 telescope.setup {
     pickers = {
@@ -9,6 +10,12 @@ telescope.setup {
         },
     },
     defaults = {
+        mappings = {
+            i = {
+                ['<C-d>'] = actions.delete_buffer,
+                ['<C-h>'] = actions.which_key,
+            },
+        },
         vimgrep_arguments = {
             'rg',
             '--hidden',
