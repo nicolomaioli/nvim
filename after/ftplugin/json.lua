@@ -1,6 +1,6 @@
-local opt = vim.opt
+local l = vim.opt_local
 
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 2
-opt.expandtab = true
+l.tabstop = 2
+l.shiftwidth = 2
+l.softtabstop = 2
+l.expandtab = true
