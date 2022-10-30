@@ -20,9 +20,9 @@ local sources = {
     null_ls.builtins.formatting.lua_format.with({
         extra_args = {
             '--column-limit',
-            '80',
+            '79',
             '--column-table-limit',
-            '80',
+            '79',
             '--indent-width',
             '4',
             '--tab-width',

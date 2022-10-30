@@ -1,6 +1,9 @@
 local lspconfig = require('lspconfig')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
+lspconfig.util.default_config.capabilities =
+    cmp_nvim_lsp.default_capabilities()
+
 local M = {
     ['dockerls'] = require('plugins.nvim-lspconfig.docker-language-server'),
     ['ansiblels'] = require('plugins.nvim-lspconfig.ansible-language-server'),
@@ -13,26 +16,25 @@ local M = {
 }
 
 for k, v in pairs(M) do
-    v.capabilities = cmp_nvim_lsp.default_capabilities()
     lspconfig[k].setup(v)
 end
 
 local load_diagnostics = function()
     -- Diagnostics
     vim.lsp.handlers['textDocument/publishDiagnostics'] =
-    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-        { virtual_text = false, signs = true })
+        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
+            {virtual_text = false, signs = true})
 
     vim.fn.sign_define('LspDiagnosticsSignError',
-        { text = '', texthl = 'LspDiagnosticsDefaultError' })
+        {text = '', texthl = 'LspDiagnosticsDefaultError'})
     vim.fn.sign_define('LspDiagnosticsSignWarning',
-        { text = '', texthl = 'LspDiagnosticsDefaultWarning' })
+        {text = '', texthl = 'LspDiagnosticsDefaultWarning'})
     vim.fn.sign_define('LspDiagnosticsSignInformation', {
         text = '',
         texthl = 'LspDiagnosticsDefaultInformation',
     })
     vim.fn.sign_define('LspDiagnosticsSignHint',
-        { text = '', texthl = 'LspDiagnosticsDefaultHint' })
+        {text = '', texthl = 'LspDiagnosticsDefaultHint'})
 end
 
 load_diagnostics()
