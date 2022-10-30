@@ -1,8 +1,9 @@
 local lspconfig = require('lspconfig')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local lspconfig_defaults = lspconfig.util.default_config
 
-lspconfig.util.default_config.capabilities =
-    cmp_nvim_lsp.default_capabilities()
+lspconfig_defaults.capabilities = vim.tbl_deep_extend('force',
+    lspconfig_defaults.capabilities, cmp_nvim_lsp.default_capabilities())
 
 local M = {
     ['dockerls'] = require('plugins.nvim-lspconfig.docker-language-server'),
