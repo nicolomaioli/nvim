@@ -20,6 +20,30 @@ for k, v in pairs(M) do
     lspconfig[k].setup(v)
 end
 
+vim.api.nvim_create_autocmd('LspAttach', {
+    desc = 'LSP actions',
+    callback = function()
+        local bufmap = function(mode, lhs, rhs)
+            local opts = {buffer = true}
+            vim.keymap.set(mode, lhs, rhs, opts)
+        end
+
+        bufmap('n', 'K', vim.lsp.buf.hover)
+        bufmap('n', 'gd', vim.lsp.buf.definition)
+        bufmap('n', 'gD', vim.lsp.buf.declaration)
+        bufmap('n', 'gi', vim.lsp.buf.implementation)
+        bufmap('n', 'go', vim.lsp.buf.type_definition)
+        bufmap('n', 'gr', vim.lsp.buf.references)
+        bufmap('n', '<C-k>', vim.lsp.buf.signature_help)
+        bufmap('n', '<F2>', vim.lsp.buf.rename)
+        bufmap('n', '<F4>', vim.lsp.buf.code_action)
+        bufmap('x', '<F4>', vim.lsp.buf.range_code_action)
+        bufmap('n', 'gl', vim.diagnostic.open_float)
+        bufmap('n', '[d', vim.diagnostic.goto_prev)
+        bufmap('n', ']d', vim.diagnostic.goto_next)
+    end,
+})
+
 local load_diagnostics = function()
     -- Diagnostics
     vim.lsp.handlers['textDocument/publishDiagnostics'] =
