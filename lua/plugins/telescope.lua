@@ -12,6 +12,7 @@ telescope.setup {
     defaults = {
         mappings = {
             i = {
+                ['<esc>'] = actions.close,
                 ['<C-d>'] = actions.delete_buffer,
                 ['<C-h>'] = actions.which_key,
             },
