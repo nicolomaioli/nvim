@@ -27,6 +27,7 @@ opt.backup = false
 opt.swapfile = false
 opt.updatetime = 300
 opt.signcolumn = 'yes'
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 opt.omnifunc = ('syntaxcomplete#Complete')
 opt.grepprg = 'rg --vimgrep -S'
 opt.grepformat = '%f:%l:%c:%m'
