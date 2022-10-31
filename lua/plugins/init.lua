@@ -149,9 +149,9 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'olimorris/onedarkpro.nvim',
+        'folke/tokyonight.nvim',
         config = function()
-            require('plugins.onedarkpro-nvim')
+            require('plugins.tokyonight')
         end,
     }
 
