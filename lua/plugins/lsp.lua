@@ -1,5 +1,4 @@
 local lsp = require('lsp-zero')
-local cmp = require('cmp')
 
 lsp.preset('recommended')
 
@@ -17,13 +16,3 @@ lsp.ensure_installed({
 
 lsp.nvim_workspace()
 lsp.setup()
-
-cmp.setup.cmdline('/', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {{name = 'buffer'}},
-})
-
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({{name = 'cmdline'}}, {{name = 'path'}}),
-})
