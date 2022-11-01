@@ -1,35 +1,34 @@
 local opt = vim.opt
 
+opt.backup = false
 opt.clipboard = 'unnamedplus'
-opt.termguicolors = true
-opt.number = true
-opt.listchars:append('tab:>-')
-opt.listchars:append('space:·')
-opt.list = true
 opt.colorcolumn = '80'
-opt.textwidth = 79
-opt.linebreak = true
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.softtabstop = 4
 opt.expandtab = false
-opt.smartindent = true
-opt.mouse = 'a'
+opt.grepformat = '%f:%l:%c:%m'
+opt.grepprg = 'rg --vimgrep -S'
+opt.hidden = true
 opt.ignorecase = true
-opt.smartcase = true
+opt.laststatus = 3
+opt.linebreak = true
+opt.list = true
+opt.listchars:append('space:·')
+opt.listchars:append('tab:>-')
+opt.mouse = 'a'
+opt.number = true
+opt.pumheight = 10
+opt.shiftwidth = 4
 opt.showcmd = true
+opt.signcolumn = 'yes'
+opt.smartcase = true
+opt.smartindent = true
+opt.softtabstop = 4
+opt.spelllang = 'en_gb'
 opt.splitbelow = true
 opt.splitright = true
-opt.spelllang = 'en_gb'
-opt.wildignorecase = true
-opt.hidden = true
-opt.backup = false
 opt.swapfile = false
+opt.tabstop = 4
+opt.termguicolors = true
+opt.textwidth = 79
 opt.updatetime = 300
-opt.signcolumn = 'yes'
+opt.wildignorecase = true
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-opt.omnifunc = ('syntaxcomplete#Complete')
-opt.grepprg = 'rg --vimgrep -S'
-opt.grepformat = '%f:%l:%c:%m'
-opt.laststatus = 3
-opt.pumheight = 10
