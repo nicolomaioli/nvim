@@ -46,10 +46,9 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'VonHeikemen/lsp-zero.nvim',
+        'neovim/nvim-lspconfig',
         requires = {
             -- LSP Support
-            {'neovim/nvim-lspconfig'},
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
 
@@ -59,6 +58,7 @@ return require('packer').startup(function(use)
             {'hrsh7th/cmp-path'},
             {'hrsh7th/cmp-nvim-lsp'},
             {'hrsh7th/cmp-nvim-lua'},
+            {'onsails/lspkind.nvim'},
             {'saadparwaiz1/cmp_luasnip'},
 
             -- Snippets
@@ -72,10 +72,10 @@ return require('packer').startup(function(use)
 
     use {
         'jose-elias-alvarez/null-ls.nvim',
+        requires = {'nvim-lua/plenary.nvim'},
         config = function()
             require('plugins.null-ls-nvim')
         end,
-        requires = {'nvim-lua/plenary.nvim'},
     }
 
     use {
@@ -88,35 +88,14 @@ return require('packer').startup(function(use)
 
     use {
         'mfussenegger/nvim-dap',
+        requires = {
+            {'rcarriga/nvim-dap-ui'},
+            {'leoluz/nvim-dap-go'},
+            {'mfussenegger/nvim-dap-python'},
+        },
         config = function()
-            require('plugins.nvim-dap')
+            require('plugins.dap')
         end,
-    }
-
-    use {
-        'rcarriga/nvim-dap-ui',
-        requires = {'mfussenegger/nvim-dap'},
-        config = function()
-            require('plugins.nvim-dap.nvim-dap-ui')
-        end,
-    }
-
-    use {
-        'leoluz/nvim-dap-go',
-        requires = {'mfussenegger/nvim-dap'},
-        config = function()
-            require('plugins.nvim-dap.nvim-dap-go')
-        end,
-        ft = 'go',
-    }
-
-    use {
-        'mfussenegger/nvim-dap-python',
-        requires = {'mfussenegger/nvim-dap'},
-        config = function()
-            require('plugins.nvim-dap.nvim-dap-python')
-        end,
-        ft = 'python',
     }
 
     use {
