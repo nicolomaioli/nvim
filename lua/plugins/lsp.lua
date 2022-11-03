@@ -34,7 +34,10 @@ cmp.setup({
         {name = 'buffer', keyword_length = 3},
         {name = 'luasnip', keyword_length = 2},
     },
-    window = {documentation = cmp.config.window.bordered()},
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
     formatting = {
         fields = {'menu', 'abbr', 'kind'},
         format = lspkind.cmp_format(),
@@ -157,17 +160,32 @@ local load_diagnostics = function()
     vim.lsp.handlers['textDocument/publishDiagnostics'] =
         vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
             {virtual_text = false, signs = true})
+    vim.lsp.handlers['textDocument/hover'] =
+        vim.lsp.with(vim.lsp.handlers.hover, {border = 'rounded'})
+    vim.lsp.handlers['textDocument/signatureHelp'] =
+        vim.lsp.with(vim.lsp.handlers.signature_help, {border = 'rounded'})
 
-    vim.fn.sign_define('LspDiagnosticsSignError',
-        {text = '✘', texthl = 'LspDiagnosticsDefaultError'})
-    vim.fn.sign_define('LspDiagnosticsSignWarning',
-        {text = '▲', texthl = 'LspDiagnosticsDefaultWarning'})
-    vim.fn.sign_define('LspDiagnosticsSignInformation', {
-        text = '⚑',
-        texthl = 'LspDiagnosticsDefaultInformation',
+    local signs = {Error = '', Warn = '', Hint = '', Info = ''}
+    for type, icon in pairs(signs) do
+        local hl = 'DiagnosticSign' .. type
+        vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+    end
+
+    vim.diagnostic.config({
+        virtual_text = false,
+        signs = {active = signs},
+        update_in_insert = true,
+        underline = true,
+        severity_sort = true,
+        float = {
+            focusable = false,
+            style = 'minimal',
+            border = 'rounded',
+            source = 'always',
+            header = '',
+            prefix = '',
+        },
     })
-    vim.fn.sign_define('LspDiagnosticsSignHint',
-        {text = '', texthl = 'LspDiagnosticsDefaultHint'})
 end
 
 load_diagnostics()
