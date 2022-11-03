@@ -1,6 +1,6 @@
+require('gui')
 require('g')
 require('opt')
 require('keymaps')
 require('plugins')
 require('cmd')
-require('gui')
