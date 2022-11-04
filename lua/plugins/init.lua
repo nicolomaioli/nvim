@@ -131,7 +131,15 @@ return require('packer').startup(function(use)
     use {
         'folke/tokyonight.nvim',
         config = function()
-            require('plugins.tokyonight')
+            require('colorschemes.tokyonight')
+        end,
+    }
+
+    use {
+        'catppuccin/nvim',
+        as = 'catppuccin',
+        config = function()
+            require('colorschemes.catppuccin')
         end,
     }
 
