@@ -130,6 +130,7 @@ lspconfig.pyright.setup({})
 lspconfig.terraformls.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.yamlls.setup({})
+lspconfig.tailwindcss.setup({})
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
