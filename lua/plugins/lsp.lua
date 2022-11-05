@@ -140,6 +140,25 @@ lspconfig.tailwindcss.setup({
         'node_modules', '.git'),
 })
 
+local yank_diagnostic = function()
+    -- diagnostic_lnum = getcurpos_lnum - 1
+    local lnum = vim.fn.getcurpos()[2] - 1
+    local diagnostics = vim.diagnostic.get(0, {lnum = lnum})
+
+    -- get the highest severity diagnostic on line
+    table.sort(diagnostics, function(cur, next)
+        return cur.severity > next.severity
+    end)
+    local d = diagnostics[1]
+    if d ~= nil then
+        local msg = d.message
+        vim.fn.setreg('+', msg)
+        print(msg .. ' copied to clipboard')
+    else
+        print('no diagnostic available')
+    end
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
     callback = function()
@@ -161,6 +180,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         bufmap('n', 'gl', vim.diagnostic.open_float)
         bufmap('n', '[d', vim.diagnostic.goto_prev)
         bufmap('n', ']d', vim.diagnostic.goto_next)
+        bufmap('n', '<leader>dy', yank_diagnostic)
     end,
 })
 
