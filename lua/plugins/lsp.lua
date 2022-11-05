@@ -130,6 +130,9 @@ lspconfig.pyright.setup({})
 lspconfig.terraformls.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.yamlls.setup({})
+lspconfig.emmet_ls.setup({})
+lspconfig.prismals.setup({})
+
 lspconfig.tailwindcss.setup({
     root_dir = lspconfig.util.root_pattern('tailwind.config.js',
         'tailwind.config.cjs', 'tailwind.config.ts', 'postcss.config.js',
