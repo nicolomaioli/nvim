@@ -39,6 +39,7 @@ local load_mappings = function()
     vim.keymap.set('n', '<leader>fk', builtin.keymaps)
     vim.keymap.set('n', '<leader>fm', builtin.marks)
     vim.keymap.set('n', '<leader>fr', builtin.reloader)
+    vim.keymap.set('n', '<leader>ld', builtin.diagnostics)
 end
 
 load_mappings()
