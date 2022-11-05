@@ -1,1 +1,1 @@
-require('toggleterm').setup({open_mapping = [[<C-/>]]})
+require('toggleterm').setup({open_mapping = [[<C-`>]]})
