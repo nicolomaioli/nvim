@@ -52,6 +52,9 @@ return require('packer').startup(function(use)
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
 
+            -- Neovim plugin development
+            {'folke/neodev.nvim'},
+
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
             {'hrsh7th/cmp-buffer'},
@@ -91,6 +94,7 @@ return require('packer').startup(function(use)
         'mfussenegger/nvim-dap',
         requires = {
             {'rcarriga/nvim-dap-ui'},
+            {'jbyuki/one-small-step-for-vimkind'},
             {'leoluz/nvim-dap-go'},
             {'mfussenegger/nvim-dap-python'},
         },

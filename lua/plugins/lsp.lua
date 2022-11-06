@@ -3,6 +3,7 @@ local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
+local neodev = require('neodev')
 local lspconfig = require('lspconfig')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local lspconfig_defaults = lspconfig.util.default_config
@@ -109,18 +110,10 @@ mason_lspconfig.setup()
 lspconfig_defaults.capabilities = vim.tbl_deep_extend('force',
     lspconfig_defaults.capabilities, cmp_nvim_lsp.default_capabilities())
 
+neodev.setup({setup_jsonls = false})
+
 lspconfig.sumneko_lua.setup({
-    settings = {
-        Lua = {
-            runtime = {version = 'LuaJIT'},
-            diagnostics = {globals = {'vim', 'augroup'}},
-            workspace = {
-                library = vim.api.nvim_get_runtime_file('', true),
-                checkThirdParty = false,
-            },
-            telemetry = {enable = false},
-        },
-    },
+    settings = {Lua = {completion = {callSnippet = 'Replace'}}},
 })
 
 lspconfig.dockerls.setup({})
@@ -150,6 +143,7 @@ local yank_diagnostic = function()
         return cur.severity > next.severity
     end)
     local d = diagnostics[1]
+
     if d ~= nil then
         local msg = d.message
         vim.fn.setreg('+', msg)
