@@ -169,6 +169,8 @@ return require('packer').startup(function(use)
         end,
     }
 
+    use 'nicolomaioli/wtfm.nvim'
+
     if bootstrap then
         require('packer').sync()
     end
