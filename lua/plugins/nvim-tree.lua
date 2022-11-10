@@ -15,7 +15,11 @@ require('nvim-tree').setup({
 })
 
 local load_mappings = function()
-    vim.keymap.set('n', '<C-/>', ':NvimTreeToggle<CR>')
+    if vim.g.neovide then
+        vim.keymap.set('n', '<C-/>', ':NvimTreeToggle<CR>')
+    else
+        vim.keymap.set('n', '<leader>kb', ':NvimTreeToggle<CR>')
+    end
 end
 
 load_mappings()
