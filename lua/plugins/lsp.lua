@@ -6,7 +6,6 @@ local mason_lspconfig = require('mason-lspconfig')
 local neodev = require('neodev')
 local lspconfig = require('lspconfig')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
-local lspconfig_defaults = lspconfig.util.default_config
 local wtfm = require('wtfm')
 
 -- [[
@@ -117,8 +116,9 @@ cmp.setup.cmdline(':', {
 mason.setup()
 mason_lspconfig.setup()
 
-lspconfig_defaults.capabilities = vim.tbl_deep_extend('force',
-    lspconfig_defaults.capabilities, cmp_nvim_lsp.default_capabilities())
+lspconfig.util.default_config.capabilities =
+    vim.tbl_deep_extend('force', lspconfig.util.default_config.capabilities,
+        cmp_nvim_lsp.default_capabilities())
 
 neodev.setup({setup_jsonls = false})
 
@@ -136,16 +136,22 @@ lspconfig.ansiblels.setup({})
 lspconfig.gopls.setup({})
 lspconfig.pyright.setup({})
 lspconfig.terraformls.setup({})
-lspconfig.tsserver.setup({})
 lspconfig.yamlls.setup({})
 lspconfig.emmet_ls.setup({})
 lspconfig.prismals.setup({})
 
+lspconfig.tsserver.setup({
+    root_dir = lspconfig.util.root_pattern('package.json'),
+})
+
+lspconfig.denols.setup({
+    root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+})
+
 lspconfig.tailwindcss.setup({
     root_dir = lspconfig.util.root_pattern('tailwind.config.js',
         'tailwind.config.cjs', 'tailwind.config.ts', 'postcss.config.js',
-        'postcss.config.cjs', 'postcss.config.ts', 'package.json',
-        'node_modules', '.git'),
+        'postcss.config.cjs', 'postcss.config.ts', 'package.json'),
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {

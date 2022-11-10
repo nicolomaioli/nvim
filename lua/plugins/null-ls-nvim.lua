@@ -1,9 +1,21 @@
 local null_ls = require('null-ls')
 
 local sources = {
-    null_ls.builtins.code_actions.eslint_d,
-    null_ls.builtins.diagnostics.eslint_d,
-    null_ls.builtins.formatting.eslint_d,
+    null_ls.builtins.code_actions.eslint_d.with({
+        condition = function(utils)
+            return utils.root_has_file({'package.json'})
+        end,
+    }),
+    null_ls.builtins.diagnostics.eslint_d.with({
+        condition = function(utils)
+            return utils.root_has_file({'package.json'})
+        end,
+    }),
+    null_ls.builtins.formatting.eslint_d.with({
+        condition = function(utils)
+            return utils.root_has_file({'package.json'})
+        end,
+    }),
     null_ls.builtins.formatting.prettierd.with({
         filetypes = {
             'html',
@@ -14,6 +26,14 @@ local sources = {
             'typescript',
             'typescriptreact',
         },
+        condition = function(utils)
+            return utils.root_has_file({'package.json'})
+        end,
+    }),
+    null_ls.builtins.formatting.deno_fmt.with({
+        condition = function(utils)
+            return utils.root_has_file({'deno.json', 'deno.jsonc'})
+        end,
     }),
     null_ls.builtins.formatting.black,
     null_ls.builtins.diagnostics.ansiblelint,
@@ -45,6 +65,7 @@ local sources = {
     }),
 }
 
+-- lsp format on save
 local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
         filter = function(client)
