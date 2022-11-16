@@ -26,6 +26,7 @@ return require('packer').startup(function(use)
         requires = {
             {'nvim-treesitter/nvim-treesitter-textobjects'},
             {'nvim-treesitter/nvim-treesitter-context'},
+            {'nvim-treesitter/playground'},
         },
         run = ':TSUpdate',
         config = function()
@@ -34,8 +35,6 @@ return require('packer').startup(function(use)
             require('plugins.nvim-treesitter-context')
         end,
     }
-
-    use 'nvim-treesitter/playground'
 
     use {
         'stevearc/aerial.nvim',
@@ -119,9 +118,7 @@ return require('packer').startup(function(use)
     }
 
     use 'pearofducks/ansible-vim'
-
     use 'tpope/vim-commentary'
-
     use 'tpope/vim-surround'
 
     use {
