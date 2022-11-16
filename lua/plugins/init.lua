@@ -23,16 +23,15 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-treesitter/nvim-treesitter',
+        requires = {
+            {'nvim-treesitter/nvim-treesitter-textobjects'},
+            {'nvim-treesitter/nvim-treesitter-context'},
+        },
         run = ':TSUpdate',
         config = function()
             require('plugins.nvim-treesitter')
-        end,
-    }
-
-    use {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        config = function()
             require('plugins.nvim-treesitter-textobjects')
+            require('plugins.nvim-treesitter-context')
         end,
     }
 
