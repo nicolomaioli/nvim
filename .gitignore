@@ -1,5 +1,5 @@
-# neovim plugins
-plugin/
+# packer
+packer_compiled.lua
 
 # ansible
 *.retry
