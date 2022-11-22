@@ -30,11 +30,6 @@ local sources = {
             return utils.root_has_file({'package.json'})
         end,
     }),
-    null_ls.builtins.formatting.deno_fmt.with({
-        condition = function(utils)
-            return utils.root_has_file({'deno.json', 'deno.jsonc'})
-        end,
-    }),
     null_ls.builtins.formatting.black,
     null_ls.builtins.diagnostics.ansiblelint,
     null_ls.builtins.formatting.lua_format.with({

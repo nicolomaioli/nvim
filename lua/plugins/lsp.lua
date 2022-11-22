@@ -116,6 +116,20 @@ cmp.setup.cmdline(':', {
 mason.setup()
 mason_lspconfig.setup()
 
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {clear = true})
+local enable_formatting = function(client, bufnr)
+    if client.supports_method 'textDocument/formatting' then
+        vim.api.nvim_clear_autocmds {group = augroup, buffer = bufnr}
+        vim.api.nvim_create_autocmd('BufWritePre', {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format({bufnr = bufnr})
+            end,
+        })
+    end
+end
+
 lspconfig.util.default_config.capabilities =
     vim.tbl_deep_extend('force', lspconfig.util.default_config.capabilities,
         cmp_nvim_lsp.default_capabilities())
@@ -138,7 +152,7 @@ lspconfig.pyright.setup({})
 lspconfig.terraformls.setup({})
 lspconfig.yamlls.setup({})
 lspconfig.emmet_ls.setup({})
-lspconfig.prismals.setup({})
+lspconfig.prismals.setup({on_attach = enable_formatting})
 
 lspconfig.tsserver.setup({
     root_dir = lspconfig.util.root_pattern('package.json'),
@@ -146,6 +160,7 @@ lspconfig.tsserver.setup({
 
 lspconfig.denols.setup({
     root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+    on_attach = enable_formatting,
 })
 
 lspconfig.tailwindcss.setup({
