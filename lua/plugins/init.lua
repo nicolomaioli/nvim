@@ -93,6 +93,7 @@ return require('packer').startup(function(use)
         requires = {
             {'rcarriga/nvim-dap-ui'},
             {'jbyuki/one-small-step-for-vimkind'},
+            {'mxsdev/nvim-dap-vscode-js'},
             {'leoluz/nvim-dap-go'},
             {'mfussenegger/nvim-dap-python'},
         },

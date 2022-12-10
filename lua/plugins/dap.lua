@@ -14,6 +14,44 @@ dap.listeners.before.event_exited['dapui_config'] = function()
     dapui.close({})
 end
 
+-- vscode-js-debug
+require('dap-vscode-js').setup({
+    node_path = vim.fn.getenv('HOME') .. '/.volta/bin/node',
+    debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter',
+    debugger_cmd = {'js-debug-adapter'},
+    adapters = {
+        'pwa-node',
+        'pwa-chrome',
+        'pwa-msedge',
+        'node-terminal',
+        'pwa-extensionHost',
+    },
+})
+
+for _, language in ipairs({'typescript', 'javascript'}) do
+    dap.configurations[language] = {
+        {
+            name = 'Launch',
+            type = 'pwa-node',
+            request = 'launch',
+            program = '${file}',
+            rootPath = '${workspaceFolder}',
+            cwd = '${workspaceFolder}',
+            sourceMaps = true,
+            skipFiles = {'<node_internals>/**'},
+            protocol = 'inspector',
+            console = 'integratedTerminal',
+        },
+        {
+            type = 'pwa-node',
+            request = 'attach',
+            name = 'Attach',
+            processId = require'dap.utils'.pick_process,
+            cwd = '${workspaceFolder}',
+        },
+    }
+end
+
 -- adapters
 require('dap-go').setup()
 require('dap-python').setup()
