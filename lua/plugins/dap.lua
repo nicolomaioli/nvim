@@ -14,7 +14,7 @@ dap.listeners.before.event_exited['dapui_config'] = function()
     dapui.close({})
 end
 
--- vscode-js-debug
+-- vscode-js-debug (js-debug-adapter in Mason)
 require('dap-vscode-js').setup({
     node_path = vim.fn.getenv('HOME') .. '/.volta/bin/node',
     debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter',
