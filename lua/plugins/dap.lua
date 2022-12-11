@@ -49,6 +49,26 @@ for _, language in ipairs({'typescript', 'javascript'}) do
             processId = require'dap.utils'.pick_process,
             cwd = '${workspaceFolder}',
         },
+        {
+            request = 'launch',
+            name = 'Deno launch',
+            type = 'pwa-node',
+            program = '${file}',
+            cwd = '${workspaceFolder}',
+            runtimeExecutable = vim.fn.getenv('HOME') .. '/.deno/bin/deno',
+            runtimeArgs = {'run', '--inspect-brk'},
+            attachSimplePort = 9229,
+        },
+        {
+            request = 'launch',
+            name = 'Deno test launch',
+            type = 'pwa-node',
+            program = '${file}',
+            cwd = '${workspaceFolder}',
+            runtimeExecutable = vim.fn.getenv('HOME') .. '/.deno/bin/deno',
+            runtimeArgs = {'test', '--inspect-brk'},
+            attachSimplePort = 9229,
+        },
     }
 end
 
