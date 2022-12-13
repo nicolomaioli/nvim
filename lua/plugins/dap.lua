@@ -28,10 +28,15 @@ require('dap-vscode-js').setup({
     },
 })
 
-for _, language in ipairs({'typescript', 'javascript'}) do
+for _, language in ipairs({
+    'typescript',
+    'javascript',
+    'javascriptreact',
+    'typescriptreact',
+}) do
     dap.configurations[language] = {
         {
-            name = 'Launch',
+            name = 'Launch Node',
             type = 'pwa-node',
             request = 'launch',
             program = '${file}',
@@ -43,11 +48,21 @@ for _, language in ipairs({'typescript', 'javascript'}) do
             console = 'integratedTerminal',
         },
         {
+            name = 'Attach Node',
             type = 'pwa-node',
             request = 'attach',
-            name = 'Attach',
             processId = require'dap.utils'.pick_process,
             cwd = '${workspaceFolder}',
+        },
+        {
+            name = 'Attach Chrome (port: 9222)',
+            type = 'pwa-chrome',
+            request = 'attach',
+            program = '${file}',
+            cwd = '${workspaceFolder}',
+            sourceMaps = true,
+            port = 9222,
+            webRoot = '${workspaceFolder}',
         },
         {
             request = 'launch',
@@ -56,7 +71,7 @@ for _, language in ipairs({'typescript', 'javascript'}) do
             program = '${file}',
             cwd = '${workspaceFolder}',
             runtimeExecutable = vim.fn.getenv('HOME') .. '/.deno/bin/deno',
-            runtimeArgs = {'run', '--inspect-brk'},
+            runtimeArgs = {'run', '--inspect-brk', '--allow-all'},
             attachSimplePort = 9229,
         },
         {
@@ -66,7 +81,7 @@ for _, language in ipairs({'typescript', 'javascript'}) do
             program = '${file}',
             cwd = '${workspaceFolder}',
             runtimeExecutable = vim.fn.getenv('HOME') .. '/.deno/bin/deno',
-            runtimeArgs = {'test', '--inspect-brk'},
+            runtimeArgs = {'test', '--inspect-brk', '--allow-all'},
             attachSimplePort = 9229,
         },
     }
