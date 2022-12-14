@@ -1,5 +1,2 @@
 # packer
 packer_compiled.lua
-
-# ansible
-*.retry

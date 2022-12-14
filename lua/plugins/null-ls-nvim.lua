@@ -32,7 +32,6 @@ local sources = {
         end,
     }),
     null_ls.builtins.formatting.black,
-    null_ls.builtins.diagnostics.ansiblelint,
     null_ls.builtins.formatting.lua_format.with({
         extra_args = {
             '--column-limit',

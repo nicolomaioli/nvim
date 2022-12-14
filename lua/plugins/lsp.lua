@@ -146,7 +146,6 @@ lspconfig.sumneko_lua.setup({
 })
 
 lspconfig.dockerls.setup({})
-lspconfig.ansiblels.setup({})
 lspconfig.gopls.setup({})
 lspconfig.pyright.setup({})
 lspconfig.terraformls.setup({})
