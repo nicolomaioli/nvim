@@ -144,6 +144,13 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'ishan9299/nvim-solarized-lua',
+        config = function()
+            require('colorschemes.solarized')
+        end,
+    }
+
+    use {
         'nvim-lualine/lualine.nvim',
         config = function()
             require('plugins.lualine')
