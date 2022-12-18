@@ -10,6 +10,6 @@ local colorscheme = 'solarized-flat'
 
 for _, v in pairs(colors) do
     if v == colorscheme then
-        cmd('colorscheme ' .. colorscheme)
+        cmd.colorscheme(colorscheme)
     end
 end
