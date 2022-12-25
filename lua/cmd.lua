@@ -1,4 +1,5 @@
 local cmd = vim.cmd
+local api = vim.api
 
 cmd('filetype plugin on')
 cmd('syntax enable')
@@ -12,4 +13,10 @@ for _, v in pairs(colors) do
     if v == colorscheme then
         cmd.colorscheme(colorscheme)
     end
+end
+
+-- Set transparent background in the terminal
+if (vim.fn.has('gui_running') == 0) then
+    api.nvim_set_hl(0, 'Normal', {bg = 'none'})
+    api.nvim_set_hl(0, 'NormalFloat', {bg = 'none'})
 end
