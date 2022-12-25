@@ -37,46 +37,31 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'stevearc/aerial.nvim',
-        config = function()
-            require('plugins.aerial')
-        end,
-    }
-
-    use {
-        'neovim/nvim-lspconfig',
+        'VonHeikemen/lsp-zero.nvim',
         requires = {
             -- LSP Support
+            {'neovim/nvim-lspconfig'},
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
-
-            -- Neovim plugin development
-            {'folke/neodev.nvim'},
 
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
             {'hrsh7th/cmp-buffer'},
             {'hrsh7th/cmp-path'},
-            {'hrsh7th/cmp-cmdline'},
+            {'saadparwaiz1/cmp_luasnip'},
             {'hrsh7th/cmp-nvim-lsp'},
             {'hrsh7th/cmp-nvim-lua'},
-            {'onsails/lspkind.nvim'},
-            {'saadparwaiz1/cmp_luasnip'},
 
             -- Snippets
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
+
+            -- Null-ls
+            {'jose-elias-alvarez/null-ls.nvim'},
+            {'nvim-lua/plenary.nvim'},
         },
         config = function()
             require('plugins.lsp')
-        end,
-    }
-
-    use {
-        'jose-elias-alvarez/null-ls.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
-        config = function()
-            require('plugins.null-ls-nvim')
         end,
     }
 
