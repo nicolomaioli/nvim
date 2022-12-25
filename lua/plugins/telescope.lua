@@ -40,7 +40,11 @@ local load_mappings = function()
     vim.keymap.set('n', '<leader>fk', builtin.keymaps)
     vim.keymap.set('n', '<leader>fm', builtin.marks)
     vim.keymap.set('n', '<leader>fr', builtin.reloader)
-    vim.keymap.set('n', '<leader>fd', builtin.diagnostics)
+
+    -- lsp
+    vim.keymap.set('n', '<leader>ld', builtin.diagnostics)
+    vim.keymap.set('n', '<leader>lr', builtin.lsp_references)
+    vim.keymap.set('n', '<leader>ls', builtin.lsp_document_symbols)
 end
 
 load_mappings()
