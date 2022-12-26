@@ -6,22 +6,22 @@ telescope.setup {
     pickers = {
         find_files = {
             find_command = {'rg', '--files', '--iglob', '!.git', '--hidden'},
-            previewer = false
-        }
+            previewer = false,
+        },
     },
     defaults = {
         mappings = {
             i = {
                 ['<esc>'] = actions.close,
                 ['<C-d>'] = actions.delete_buffer,
-                ['<C-h>'] = actions.which_key
-            }
+                ['<C-h>'] = actions.which_key,
+            },
         },
         vimgrep_arguments = {
             'rg', '--hidden', '--glob=!.git', '--color=never', '--no-heading',
-            '--with-filename', '--line-number', '--column', '--smart-case'
-        }
-    }
+            '--with-filename', '--line-number', '--column', '--smart-case',
+        },
+    },
 }
 
 local load_mappings = function()

@@ -7,7 +7,7 @@ require('toggleterm').setup({
         end
     end,
     direction = 'vertical',
-    open_mapping = [[<C-`>]]
+    open_mapping = [[<C-`>]],
 })
 
 local load_mappings = function()

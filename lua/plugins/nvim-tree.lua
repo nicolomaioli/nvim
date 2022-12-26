@@ -10,8 +10,8 @@ require('nvim-tree').setup({
         number = false,
         relativenumber = false,
         signcolumn = 'yes',
-        mappings = {custom_only = false}
-    }
+        mappings = {custom_only = false},
+    },
 })
 
 local load_mappings = function()
