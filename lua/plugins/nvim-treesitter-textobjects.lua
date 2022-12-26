@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.configs'.setup({
     textobjects = {
         select = {
             enable = true,
@@ -19,8 +19,8 @@ require'nvim-treesitter.configs'.setup {
         },
         swap = {
             enable = true,
-            swap_next = {['<leader>sn'] = '@parameter.inner'},
-            swap_previous = {['<leader>sp'] = '@parameter.inner'},
+            swap_next = { ['<leader>sn'] = '@parameter.inner' },
+            swap_previous = { ['<leader>sp'] = '@parameter.inner' },
         },
         move = {
             enable = true,
@@ -35,4 +35,4 @@ require'nvim-treesitter.configs'.setup {
             },
         },
     },
-}
+})

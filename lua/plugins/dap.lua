@@ -18,15 +18,21 @@ end
 require('dap-vscode-js').setup({
     node_path = vim.fn.getenv('HOME') .. '/.volta/bin/node',
     debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter',
-    debugger_cmd = {'js-debug-adapter'},
+    debugger_cmd = { 'js-debug-adapter' },
     adapters = {
-        'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal',
+        'pwa-node',
+        'pwa-chrome',
+        'pwa-msedge',
+        'node-terminal',
         'pwa-extensionHost',
     },
 })
 
 for _, language in ipairs({
-    'typescript', 'javascript', 'javascriptreact', 'typescriptreact',
+    'typescript',
+    'javascript',
+    'javascriptreact',
+    'typescriptreact',
 }) do
     dap.configurations[language] = {
         {
@@ -37,16 +43,18 @@ for _, language in ipairs({
             rootPath = '${workspaceFolder}',
             cwd = '${workspaceFolder}',
             sourceMaps = true,
-            skipFiles = {'<node_internals>/**'},
+            skipFiles = { '<node_internals>/**' },
             protocol = 'inspector',
             console = 'integratedTerminal',
-        }, {
+        },
+        {
             name = 'Attach Node',
             type = 'pwa-node',
             request = 'attach',
             processId = require'dap.utils'.pick_process,
             cwd = '${workspaceFolder}',
-        }, {
+        },
+        {
             name = 'Attach Chrome (port: 9222)',
             type = 'pwa-chrome',
             request = 'attach',
@@ -55,23 +63,25 @@ for _, language in ipairs({
             sourceMaps = true,
             port = 9222,
             webRoot = '${workspaceFolder}',
-        }, {
+        },
+        {
             request = 'launch',
             name = 'Deno launch',
             type = 'pwa-node',
             program = '${file}',
             cwd = '${workspaceFolder}',
             runtimeExecutable = vim.fn.getenv('HOME') .. '/.deno/bin/deno',
-            runtimeArgs = {'run', '--inspect-brk', '--allow-all'},
+            runtimeArgs = { 'run', '--inspect-brk', '--allow-all' },
             attachSimplePort = 9229,
-        }, {
+        },
+        {
             request = 'launch',
             name = 'Deno test launch',
             type = 'pwa-node',
             program = '${file}',
             cwd = '${workspaceFolder}',
             runtimeExecutable = vim.fn.getenv('HOME') .. '/.deno/bin/deno',
-            runtimeArgs = {'test', '--inspect-brk', '--allow-all'},
+            runtimeArgs = { 'test', '--inspect-brk', '--allow-all' },
             attachSimplePort = 9229,
         },
     }
@@ -106,7 +116,7 @@ local load_mappings = function()
     vim.keymap.set('n', '<leader>di', dap.step_into)
     vim.keymap.set('n', '<leader>dt', dap.terminate)
     vim.keymap.set('n', '<F5>', [[:lua require"osv".launch({port = 8086})<CR>]],
-                   {noremap = true})
+                   { noremap = true })
 end
 
 load_mappings()

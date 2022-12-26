@@ -1,1 +1,1 @@
-require('tokyonight').setup({style = 'storm'})
+require('tokyonight').setup({ style = 'storm' })

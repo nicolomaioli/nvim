@@ -32,5 +32,5 @@ o.termguicolors = true
 o.textwidth = 79
 o.updatetime = 300
 o.wildignorecase = true
-opt.completeopt = {'menu', 'menuone', 'noselect'}
+opt.completeopt = { 'menu', 'menuone', 'noselect' }
 o.background = 'dark'

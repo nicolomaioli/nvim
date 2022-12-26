@@ -1,1 +1,1 @@
-require('nvim-autopairs').setup {check_ts = false}
+require('nvim-autopairs').setup { check_ts = false }

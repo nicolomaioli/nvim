@@ -12,7 +12,7 @@ require('toggleterm').setup({
 
 local load_mappings = function()
     vim.keymap.set('n', '<c-t>', '<Cmd>exe v:count1 . "ToggleTerm"<CR>',
-                   {silent = true})
+                   { silent = true })
 end
 
 load_mappings()

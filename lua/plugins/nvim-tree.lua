@@ -1,5 +1,5 @@
 require('nvim-tree').setup({
-    git = {ignore = false},
+    git = { ignore = false },
     view = {
         adaptive_size = false,
         centralize_selection = false,
@@ -10,7 +10,7 @@ require('nvim-tree').setup({
         number = false,
         relativenumber = false,
         signcolumn = 'yes',
-        mappings = {custom_only = false},
+        mappings = { custom_only = false },
     },
 })
 
