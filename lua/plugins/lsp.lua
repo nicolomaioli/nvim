@@ -116,7 +116,6 @@ null_ls.setup({
                 return utils.root_has_file({ 'package.json' })
             end,
         }),
-        null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.lua_format,
     },
 })

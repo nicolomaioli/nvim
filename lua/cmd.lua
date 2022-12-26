@@ -1,5 +1,6 @@
 local cmd = vim.cmd
 local api = vim.api
+local colorscheme = require('colorschemes')
 
 cmd('filetype plugin on')
 cmd('syntax enable')
@@ -7,11 +8,11 @@ cmd('silent! helptags ALL')
 
 -- Only load the theme is it's avaialbe
 local colors = vim.fn.getcompletion('', 'color')
-local colorscheme = 'solarized-flat'
+local color = colorscheme.current
 
 for _, v in pairs(colors) do
-    if v == colorscheme then
-        cmd.colorscheme(colorscheme)
+    if v == color then
+        cmd.colorscheme(color)
     end
 end
 

@@ -1,7 +1,9 @@
+local colorscheme = require('colorschemes')
+
 require('lualine').setup({
     options = {
         icons_enabled = true,
-        theme = 'solarized',
+        theme = colorscheme.lualine,
         component_separators = { ' ', ' ' },
         section_separators = { ' ', ' ' },
         disabled_filetypes = {},
