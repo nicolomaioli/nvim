@@ -8,6 +8,6 @@ require('catppuccin').setup({
         mason = true,
         cmp = true,
         nvimtree = true,
-        telescope = true,
-    },
+        telescope = true
+    }
 })

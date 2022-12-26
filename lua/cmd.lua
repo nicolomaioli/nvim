@@ -10,9 +10,7 @@ local colors = vim.fn.getcompletion('', 'color')
 local colorscheme = 'solarized-flat'
 
 for _, v in pairs(colors) do
-    if v == colorscheme then
-        cmd.colorscheme(colorscheme)
-    end
+    if v == colorscheme then cmd.colorscheme(colorscheme) end
 end
 
 -- Set transparent background in the terminal

@@ -4,15 +4,13 @@ local dapui = require('dapui')
 -- Add listeners to automatically open and close dapui
 dapui.setup()
 
-dap.listeners.after.event_initialized['dapui_config'] = function()
-    dapui.open({})
-end
+dap.listeners.after.event_initialized['dapui_config'] =
+    function() dapui.open({}) end
 dap.listeners.before.event_terminated['dapui_config'] = function()
     dapui.close({})
 end
-dap.listeners.before.event_exited['dapui_config'] = function()
-    dapui.close({})
-end
+dap.listeners.before.event_exited['dapui_config'] =
+    function() dapui.close({}) end
 
 -- vscode-js-debug (js-debug-adapter in Mason)
 require('dap-vscode-js').setup({
@@ -20,19 +18,13 @@ require('dap-vscode-js').setup({
     debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter',
     debugger_cmd = {'js-debug-adapter'},
     adapters = {
-        'pwa-node',
-        'pwa-chrome',
-        'pwa-msedge',
-        'node-terminal',
-        'pwa-extensionHost',
-    },
+        'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal',
+        'pwa-extensionHost'
+    }
 })
 
 for _, language in ipairs({
-    'typescript',
-    'javascript',
-    'javascriptreact',
-    'typescriptreact',
+    'typescript', 'javascript', 'javascriptreact', 'typescriptreact'
 }) do
     dap.configurations[language] = {
         {
@@ -45,16 +37,14 @@ for _, language in ipairs({
             sourceMaps = true,
             skipFiles = {'<node_internals>/**'},
             protocol = 'inspector',
-            console = 'integratedTerminal',
-        },
-        {
+            console = 'integratedTerminal'
+        }, {
             name = 'Attach Node',
             type = 'pwa-node',
             request = 'attach',
             processId = require'dap.utils'.pick_process,
-            cwd = '${workspaceFolder}',
-        },
-        {
+            cwd = '${workspaceFolder}'
+        }, {
             name = 'Attach Chrome (port: 9222)',
             type = 'pwa-chrome',
             request = 'attach',
@@ -62,9 +52,8 @@ for _, language in ipairs({
             cwd = '${workspaceFolder}',
             sourceMaps = true,
             port = 9222,
-            webRoot = '${workspaceFolder}',
-        },
-        {
+            webRoot = '${workspaceFolder}'
+        }, {
             request = 'launch',
             name = 'Deno launch',
             type = 'pwa-node',
@@ -72,9 +61,8 @@ for _, language in ipairs({
             cwd = '${workspaceFolder}',
             runtimeExecutable = vim.fn.getenv('HOME') .. '/.deno/bin/deno',
             runtimeArgs = {'run', '--inspect-brk', '--allow-all'},
-            attachSimplePort = 9229,
-        },
-        {
+            attachSimplePort = 9229
+        }, {
             request = 'launch',
             name = 'Deno test launch',
             type = 'pwa-node',
@@ -82,8 +70,8 @@ for _, language in ipairs({
             cwd = '${workspaceFolder}',
             runtimeExecutable = vim.fn.getenv('HOME') .. '/.deno/bin/deno',
             runtimeArgs = {'test', '--inspect-brk', '--allow-all'},
-            attachSimplePort = 9229,
-        },
+            attachSimplePort = 9229
+        }
     }
 end
 
@@ -96,15 +84,15 @@ dap.configurations.lua = {
     {
         type = 'nlua',
         request = 'attach',
-        name = 'Attach to running Neovim instance',
-    },
+        name = 'Attach to running Neovim instance'
+    }
 }
 
 dap.adapters.nlua = function(callback, config)
     callback({
         type = 'server',
         host = config.host or '127.0.0.1',
-        port = config.port or 8086,
+        port = config.port or 8086
     })
 end
 
@@ -115,8 +103,8 @@ local load_mappings = function()
     vim.keymap.set('n', '<leader>do', dap.step_over)
     vim.keymap.set('n', '<leader>di', dap.step_into)
     vim.keymap.set('n', '<leader>dt', dap.terminate)
-    vim.keymap.set('n', '<F5>',
-        [[:lua require"osv".launch({port = 8086})<CR>]], {noremap = true})
+    vim.keymap.set('n', '<F5>', [[:lua require"osv".launch({port = 8086})<CR>]],
+                   {noremap = true})
 end
 
 load_mappings()
