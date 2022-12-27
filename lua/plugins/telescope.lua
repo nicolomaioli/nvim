@@ -1,6 +1,7 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
+local set = vim.keymap.set
 
 telescope.setup {
     pickers = {
@@ -31,20 +32,17 @@ telescope.setup {
     },
 }
 
-local load_mappings = function()
-    vim.keymap.set('n', '<leader>fb', builtin.buffers)
-    vim.keymap.set('n', '<leader>ff', builtin.find_files)
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep)
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags)
-    vim.keymap.set('n', '<leader>fj', builtin.jumplist)
-    vim.keymap.set('n', '<leader>fk', builtin.keymaps)
-    vim.keymap.set('n', '<leader>fm', builtin.marks)
-    vim.keymap.set('n', '<leader>fr', builtin.reloader)
-
-    -- lsp
-    vim.keymap.set('n', '<leader>ld', builtin.diagnostics)
-    vim.keymap.set('n', '<leader>lr', builtin.lsp_references)
-    vim.keymap.set('n', '<leader>ls', builtin.lsp_document_symbols)
-end
-
-load_mappings()
+set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope vim help' })
+set('n', '<leader>fj', builtin.jumplist, { desc = 'Telescope jumplist' })
+set('n', '<leader>fk', builtin.keymaps, { desc = 'Telescope keymaps' })
+set('n', '<leader>fm', builtin.marks, { desc = 'Telescope marks' })
+set('n', '<leader>fr', builtin.reloader, { desc = 'Telescope reloader' })
+set('n', '<leader>ld', builtin.diagnostics,
+    { desc = 'Telescope LSP diagnostics' })
+set('n', '<leader>lr', builtin.lsp_references,
+    { desc = 'Telescope LSP references' })
+set('n', '<leader>ls', builtin.lsp_document_symbols,
+    { desc = 'Telescope LSP sumbols' })

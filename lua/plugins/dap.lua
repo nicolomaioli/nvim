@@ -1,5 +1,6 @@
 local dap = require('dap')
 local dapui = require('dapui')
+local set = vim.keymap.set
 
 -- Add listeners to automatically open and close dapui
 dapui.setup()
@@ -87,13 +88,9 @@ for _, language in ipairs({
     }
 end
 
--- mappings
-local load_mappings = function()
-    vim.keymap.set('n', '<F5>', dap.continue)
-    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)
-    vim.keymap.set('n', '<leader>do', dap.step_over)
-    vim.keymap.set('n', '<leader>di', dap.step_into)
-    vim.keymap.set('n', '<leader>dt', dap.terminate)
-end
-
-load_mappings()
+set('n', '<F5>', dap.continue, { desc = 'Debug continue' })
+set('n', '<leader>db', dap.toggle_breakpoint,
+    { desc = 'Debug toggle breakpoint' })
+set('n', '<leader>do', dap.step_over, { desc = 'Debug step over' })
+set('n', '<leader>di', dap.step_into, { desc = 'Debug step into' })
+set('n', '<leader>dt', dap.terminate, { desc = 'Debug terminate' })

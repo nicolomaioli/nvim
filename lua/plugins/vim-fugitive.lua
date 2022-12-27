@@ -1,10 +1,8 @@
-local load_mappings = function()
-    vim.keymap.set('n', '<leader>gc', ':Git checkout')
-    vim.keymap.set('n', '<leader>gn', ':Git checkout -b')
-    vim.keymap.set('n', '<leader>gf', ':Git fetch<CR>')
-    vim.keymap.set('n', '<leader>gl', ':Git pull<CR>')
-    vim.keymap.set('n', '<leader>gs', ':Git<CR>')
-    vim.keymap.set('n', '<leader>gp', ':Git push<CR>')
-end
+local set = vim.keymap.set
 
-load_mappings()
+set('n', '<leader>gc', ':Git checkout', { desc = 'Git checkout' })
+set('n', '<leader>gn', ':Git checkout -b', { desc = 'Git new branch' })
+set('n', '<leader>gf', ':Git fetch<CR>', { desc = 'Git fetch' })
+set('n', '<leader>gl', ':Git pull<CR>', { desc = 'Git pull' })
+set('n', '<leader>gs', ':Git<CR>', { desc = 'Git stage' })
+set('n', '<leader>gp', ':Git push<CR>', { desc = 'Git push' })

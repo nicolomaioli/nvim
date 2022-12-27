@@ -45,7 +45,6 @@ local function plugins(use)
         run = ':TSUpdate',
         config = function()
             require('plugins.nvim-treesitter')
-            require('plugins.nvim-treesitter-textobjects')
             require('plugins.nvim-treesitter-context')
         end,
     }

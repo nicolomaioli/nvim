@@ -1,3 +1,5 @@
+local set = vim.keymap.set
+
 require('toggleterm').setup({
     size = function(term)
         if term.direction == 'horizontal' then
@@ -10,9 +12,5 @@ require('toggleterm').setup({
     open_mapping = [[<C-`>]],
 })
 
-local load_mappings = function()
-    vim.keymap.set('n', '<c-t>', '<Cmd>exe v:count1 . "ToggleTerm"<CR>',
-                   { silent = true })
-end
-
-load_mappings()
+set('n', '<c-t>', '<Cmd>exe v:count1 . "ToggleTerm"<CR>',
+    { silent = true, desc = 'Toggle terminal' })
