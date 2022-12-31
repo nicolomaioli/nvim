@@ -1,6 +1,5 @@
 local set = vim.keymap.set
 
-set('n', '<leader>sd', ':let @/=""<CR>', { desc = 'Clear last register' })
 set('n', '<leader>sr', ':%s/', { desc = 'Search and replace' })
 set('n', '<leader>cl', ':close<CR>', { desc = 'Close buffer' })
 
