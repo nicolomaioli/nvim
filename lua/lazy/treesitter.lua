@@ -16,7 +16,7 @@ return {
         -- And that's why we need to call it in a function.
 
         treesitter.setup({
-            ensure_installed = { 'lua' },
+            ensure_installed = { 'lua', 'vim' },
             auto_install = true,
             highlight = { enable = true },
             indent = { enable = true },
