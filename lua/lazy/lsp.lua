@@ -28,7 +28,7 @@ return {
 
         -- Declare an augroup to handle formatting on save
         local lsp_formatting_augroup = vim.api.nvim_create_augroup(
-                                           'LspFormatting', {})
+            'LspFormatting', {})
 
         -- The format_on_save function takes an additional format_fn, which can be
         -- overridden. In this config:
@@ -50,6 +50,7 @@ return {
             end
         end
 
+        -- lsp-compe Is the same as the recommended except that it assumes you want full control over the configuration for nvim-cmp
         lsp.preset('lsp-compe')
 
         lsp.configure('sumneko_lua', {
@@ -80,7 +81,7 @@ return {
             local line, col = unpack(vim.api.nvim_win_get_cursor(0))
             return col ~= 0 and
                        vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(
-                           col, col):match('%s') == nil
+                    col, col):match('%s') == nil
         end
 
         cmp.setup({
@@ -160,7 +161,7 @@ return {
         cmp.setup.cmdline(':', {
             mapping = cmp.mapping.preset.cmdline(),
             sources = cmp.config.sources({ { name = 'path' } },
-                                         { { name = 'cmdline' } }),
+                { { name = 'cmdline' } }),
         })
 
         -- If null-ls is attached, only use null-ls to format (avoid conflicts)
@@ -213,6 +214,7 @@ return {
                     end,
                 }),
                 null_ls.builtins.formatting.lua_format,
+                null_ls.builtins.formatting.rustfmt,
             },
         })
     end,

@@ -1,6 +1,6 @@
 return {
     'kyazdani42/nvim-tree.lua',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     keys = {
         { '<leader>kb', ':NvimTreeToggle<CR>', desc = 'Toggle NvimTree' },
         { '<C-/>', ':NvimTreeToggle<CR>', desc = 'Toggle NvimTree' },
