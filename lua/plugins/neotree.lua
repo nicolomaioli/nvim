@@ -7,8 +7,8 @@ return {
         'MunifTanjim/nui.nvim',
     },
     keys = {
-        { '<leader>kk', ':NeoTreeShowToggle<CR>', desc = 'Toggle Neotree' },
-        { '<C-/>', ':NeoTreeShowToggle<CR>', desc = 'Toggle Neotree' },
+        { '<leader>kk', ':Neotree toggle focus<CR>', desc = 'Toggle Neotree' },
+        { '<C-/>', ':Neotree toggle focus<CR>', desc = 'Toggle Neotree' },
     },
     config = function()
         -- Unless you are still migrating, remove the deprecated commands from v1.x
@@ -48,7 +48,6 @@ return {
                     folder_closed = '',
                     folder_open = '',
                     folder_empty = '',
-                    folder_empty_open = '',
                     default = '*',
                     highlight = 'NeoTreeFileIcon',
                 },
