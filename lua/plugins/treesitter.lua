@@ -9,16 +9,13 @@ return {
     config = function()
         local treesitter = require('nvim-treesitter.configs')
 
-        -- Here's a fun gotcha:
-        -- This module is called 'nvim-treesitter/nvim-treesitter', so if you
-        -- pass a table to config lazy.nvim calls require('nvim-treesitter').setup(table).
-        -- However, in the specific case of tree-sitter it should be require('nvim-treesitter.configs').setup(table).
-        -- And that's why we need to call it in a function.
-
         treesitter.setup({
             ensure_installed = { 'lua', 'vim' },
             auto_install = true,
-            highlight = { enable = true },
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = false,
+            },
             indent = { enable = true },
             incremental_selection = {
                 enable = true,

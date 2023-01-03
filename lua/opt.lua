@@ -14,7 +14,6 @@ o.linebreak = true
 o.list = true
 opt.listchars:append('space:·')
 opt.listchars:append('tab:>-')
-o.mouse = 'a'
 o.number = true
 o.pumheight = 10
 o.shiftwidth = 4

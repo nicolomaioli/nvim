@@ -1,9 +1,7 @@
 local cmd = vim.cmd
 local api = vim.api
--- local colorscheme = require('colorschemes')
 
 cmd('filetype plugin on')
-cmd('syntax enable')
 cmd('silent! helptags ALL')
 
 -- Set transparent background in the terminal
