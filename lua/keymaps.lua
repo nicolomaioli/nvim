@@ -3,6 +3,9 @@ local set = vim.keymap.set
 set('n', '<leader>sr', ':%s/', { desc = 'Search and replace' })
 set('n', '<leader>cl', ':close<CR>', { desc = 'Close buffer' })
 
+set('n', '<C-d>', '<C-d>zz')
+set('n', '<C-u>', '<C-u>zz')
+
 local tabedit_with_curpos = function()
     -- Wraps tabedit to retain cursor position
     local curpos = vim.fn.getpos('.')
