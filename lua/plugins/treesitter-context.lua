@@ -1,5 +1,10 @@
 return {
     'nvim-treesitter/nvim-treesitter-context',
     event = 'BufRead',
-    config = true,
+    config = function()
+        require('treesitter-context').setup()
+
+        vim.api
+            .nvim_set_hl(0, 'TreesitterContextBottom', { underdotted = true })
+    end,
 }
