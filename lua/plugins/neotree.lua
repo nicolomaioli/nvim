@@ -8,6 +8,11 @@ return {
     },
     keys = {
         { '<leader>kk', ':Neotree toggle focus<CR>', desc = 'Toggle Neotree' },
+        {
+            '<leader>kb',
+            ':Neotree toggle buffers focus<CR>',
+            desc = 'Toggle Neotree buffers',
+        },
         { '<C-/>', ':Neotree toggle focus<CR>', desc = 'Toggle Neotree' },
     },
     config = function()
