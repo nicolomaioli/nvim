@@ -1,6 +1,7 @@
 return {
     'ellisonleao/gruvbox.nvim',
-    lazy = false,
+    event = 'VeryLazy',
+    enabled = false,
     config = function()
         require('gruvbox').setup({
             contrast = 'soft',

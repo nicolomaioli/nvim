@@ -1,6 +1,7 @@
 local o = vim.o
 local opt = vim.opt
 
+opt.shm:append('I')
 o.backup = false
 o.clipboard = 'unnamedplus'
 o.colorcolumn = '80'

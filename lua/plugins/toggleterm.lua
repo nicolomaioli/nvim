@@ -8,6 +8,12 @@ return {
             silent = true,
             desc = 'Toggle terminal',
         },
+        {
+            '<leader>tt',
+            '<Cmd>exe v:count1 . "ToggleTerm"<CR>',
+            silent = true,
+            desc = 'Toggle terminal',
+        },
     },
     config = {
         size = function(term)
