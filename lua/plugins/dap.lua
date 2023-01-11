@@ -7,7 +7,7 @@ return {
             ':DapToggleBreakpoint<CR>',
             desc = 'Debug toggle breakpoint',
         },
-        { '<leader>do', ':DapStepOut<CR>', desc = 'Debug step over' },
+        { '<leader>do', ':DapStepOut<CR>', desc = 'Debug step out' },
         { '<leader>dv', ':DapStepOver<CR>', desc = 'Debug step over' },
         { '<leader>di', ':DapStepInto<CR>', desc = 'Debug step into' },
         { '<leader>dt', ':DapTerminate<CR>', desc = 'Debug terminate' },
@@ -16,6 +16,7 @@ return {
     config = function()
         local dap = require('dap')
         local dapui = require('dapui')
+        local utils = require('dap.utils')
 
         -- Add listeners to automatically open and close dapui
         dapui.setup()
@@ -68,8 +69,14 @@ return {
                     name = 'Attach Node',
                     type = 'pwa-node',
                     request = 'attach',
-                    processId = require'dap.utils'.pick_process,
+                    processId = utils.pick_process,
                     cwd = '${workspaceFolder}',
+                },
+                {
+                    type = 'pwa-chrome',
+                    name = 'Launch Chrome',
+                    request = 'launch',
+                    url = 'http://localhost:3000',
                 },
                 {
                     name = 'Attach Chrome (port: 9222)',
@@ -105,5 +112,7 @@ return {
                 },
             }
         end
+
+        vim.keymap.set('n', '<leader>dc', dapui.close, { desc = 'Dapui close' })
     end,
 }

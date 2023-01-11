@@ -5,6 +5,7 @@ return {
         'neovim/nvim-lspconfig',
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
+        -- completion
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
@@ -14,8 +15,12 @@ return {
         'hrsh7th/cmp-nvim-lua',
         'L3MON4D3/LuaSnip',
         'rafamadriz/friendly-snippets',
-        'jose-elias-alvarez/null-ls.nvim',
         'nvim-lua/plenary.nvim',
+        -- null
+        'jose-elias-alvarez/null-ls.nvim',
+        -- folds
+        'kevinhwang91/nvim-ufo',
+        'kevinhwang91/promise-async',
     },
     config = function()
         local lsp = require('lsp-zero')
@@ -53,6 +58,18 @@ return {
         -- lsp-compe Is the same as the recommended except that it assumes you want full control over the configuration for nvim-cmp
         lsp.preset('lsp-compe')
 
+        -- folding
+        lsp.set_server_config({
+            capabilities = {
+                textDocument = {
+                    foldingRange = {
+                        dynamicRegistration = false,
+                        lineFoldingOnly = true,
+                    },
+                },
+            },
+        })
+
         lsp.configure('sumneko_lua', {
             settings = {
                 Lua = {
@@ -74,6 +91,9 @@ return {
         end)
 
         lsp.setup()
+
+        -- folding
+        require('ufo').setup()
 
         local select_opts = { behavior = cmp.SelectBehavior.Select }
 
@@ -217,5 +237,14 @@ return {
                 null_ls.builtins.formatting.rustfmt,
             },
         })
+
+        vim.o.foldcolumn = '0'
+        vim.o.foldlevel = 99
+        vim.o.foldlevelstart = 99
+        vim.o.foldenable = true
+
+        -- Using ufo provider need remap `zR` and `zM`
+        vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+        vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
     end,
 }
