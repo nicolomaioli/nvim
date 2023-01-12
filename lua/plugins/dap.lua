@@ -54,6 +54,18 @@ return {
         }) do
             dap.configurations[language] = {
                 {
+                    name = 'Launch Next',
+                    type = 'pwa-node',
+                    request = 'launch',
+                    env = { NODE_OPTIONS = '--inspect' },
+                    runtimeExecutable = 'npm',
+                    runtimeArgs = { 'run', 'dev' },
+                    rootPath = '${workspaceFolder}',
+                    cwd = '${workspaceFolder}',
+                    console = 'integratedTerminal',
+                    internalConsoleOptions = 'neverOpen',
+                },
+                {
                     name = 'Launch Node',
                     type = 'pwa-node',
                     request = 'launch',
@@ -73,8 +85,8 @@ return {
                     cwd = '${workspaceFolder}',
                 },
                 {
-                    type = 'pwa-chrome',
                     name = 'Launch Chrome',
+                    type = 'pwa-chrome',
                     request = 'launch',
                     url = 'http://localhost:3000',
                 },
