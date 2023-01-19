@@ -23,10 +23,11 @@ return {
         'kevinhwang91/promise-async',
     },
     config = function()
-        local lsp = require('lsp-zero')
-        local null_ls = require('null-ls')
         local cmp = require('cmp')
+        local lsp = require('lsp-zero')
         local luasnip = require('luasnip')
+        local null_ls = require('null-ls')
+        local ufo = require('ufo')
 
         -- IMPOTANT: ensure that null-ls is initialised *after* lsp-zero, otherwise it
         -- overrides a number of functions and prevents Mason to initialise properly.
@@ -93,7 +94,7 @@ return {
         lsp.setup()
 
         -- folding
-        require('ufo').setup()
+        ufo.setup()
 
         local select_opts = { behavior = cmp.SelectBehavior.Select }
 
@@ -244,7 +245,9 @@ return {
         vim.o.foldenable = true
 
         -- Using ufo provider need remap `zR` and `zM`
-        vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-        vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+        vim.keymap.set('n', 'zR', ufo.openAllFolds,
+            { desc = 'Ufo open all folds' })
+        vim.keymap.set('n', 'zM', ufo.closeAllFolds,
+            { desc = 'Ufo close all folds' })
     end,
 }

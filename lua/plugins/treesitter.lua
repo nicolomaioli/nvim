@@ -4,6 +4,7 @@ return {
     dependencies = {
         'nvim-treesitter/nvim-treesitter-textobjects',
         'nvim-treesitter/playground',
+        'JoosepAlviste/nvim-ts-context-commentstring',
     },
     build = ':TSUpdate',
     config = function()
@@ -84,6 +85,8 @@ return {
                     show_help = '?',
                 },
             },
+            context_commentstring = { enable = true, enable_autocmd = false },
+            matchup = { enable = true },
         })
     end,
 }
