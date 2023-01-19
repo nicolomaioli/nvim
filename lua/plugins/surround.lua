@@ -1,1 +1,1 @@
-return { 'kylechui/nvim-surround', event = 'BufRead', config = true }
+return { 'kylechui/nvim-surround', event = 'BufReadPost', config = true }

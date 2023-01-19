@@ -1,6 +1,6 @@
 return {
     'numToStr/Comment.nvim',
-    event = 'BufRead',
+    event = 'BufReadPost',
     config = function()
         local integration = require(
             'ts_context_commentstring.integrations.comment_nvim')

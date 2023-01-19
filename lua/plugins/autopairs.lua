@@ -1,5 +1,5 @@
 return {
     'windwp/nvim-autopairs',
-    event = 'BufRead',
+    event = 'BufReadPost',
     config = { check_ts = false },
 }
